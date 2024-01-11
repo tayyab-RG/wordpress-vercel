@@ -1,0 +1,142 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 2,
+	"settings": {
+		"appearanceTools": true,
+		"color": {
+			"palette": [
+				{
+					"color": "#fff",
+					"name": "Foreground",
+					"slug": "foreground"
+				},
+				{
+					"color": "#000",
+					"name": "Background",
+					"slug": "background"
+				},
+				{
+					"color": "#df6b3a",
+					"name": "Primary",
+					"slug": "primary"
+				},
+				{
+					"color": "#224303",
+					"name": "Secondary",
+					"slug": "secondary"
+				},
+				{
+					"color": "#000",
+					"name": "Heading",
+					"slug": "heading"
+				},
+				{
+					"color": "#000",
+					"name": "Text Link",
+					"slug": "text-link"
+				},
+				{
+					"color": "#224303",
+					"name": "Link Hover",
+					"slug": "link-hover"
+				},
+				{
+					"color": "#fff6ef",
+					"name": "Background Secondary ",
+					"slug": "background-secondary"
+				},
+				{
+					"color": "#fcfcfc",
+					"name": "Secondary Item",
+					"slug": "background-item"
+				},
+				{
+					"color": "#666",
+					"name": "Body Text",
+					"slug": "body-text"
+				},
+				
+				{
+					"color": "#ccc",
+					"name": "Border",
+					"slug": "border"
+				},
+				{
+					"color": "#1A1A1A",
+					"name": "Tertiary",
+					"slug": "tertiary"
+				},
+				{
+					"color": "#e8e8e8",
+					"name": "Input Field",
+					"slug": "input-field"
+				},
+				{
+					"color": "#777",
+					"name": "Boulder",
+					"slug": "boulder"
+				},
+				{
+					"color": "#7d6043",
+					"name": "coffee",
+					"slug": "coffee"
+				},
+				{
+					"color": "#25d6a2",
+					"name": "Cyan",
+					"slug": "cyan"
+				},
+				{
+					"color": "#0b1b43",
+					"name": "Dark Blue",
+					"slug": "dark-blue"
+				},
+				{
+					"color": "#30b4da",
+					"name": "Sky Blue",
+					"slug": "sky-blue"
+				},
+				{
+					"color": "#0fb36c",
+					"name": "Dark Green",
+					"slug": "dark-green"
+				},
+				{
+					"color": "#6ba518",
+					"name": "Lite Green",
+					"slug": "lite-green"
+				},
+				{
+					"color": "#c74a73",
+					"name": "Purple",
+					"slug": "purple"
+				},
+				{
+					"color": "#9261c6",
+					"name": "Dark Purple",
+					"slug": "dark-purple"
+				},
+				{
+					"color": "#f78550",
+					"name": "Orange",
+					"slug": "orange"
+				},
+				{
+					"color": "#f9556d",
+					"name": "Lite Red",
+					"slug": "lite-red"
+				},
+				{
+					"color": "#27808c",
+					"name": "Hexadecimal",
+					"slug": "hexadecimal"
+				},
+				{
+					"color": "#ff6b98",
+					"name": "Pink",
+					"slug": "pink"
+				}
+			]
+		}
+	}
+}

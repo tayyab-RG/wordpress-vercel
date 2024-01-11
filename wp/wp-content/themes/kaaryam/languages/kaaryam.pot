@@ -1,0 +1,518 @@
+# Copyright (c) 2024 WPNepal. All Rights Reserved.
+msgid ""
+msgstr ""
+"Project-Id-Version: Kaaryam 1.0.2\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/kaaryam\n"
+"Last-Translator: wordcampnepal@gmail.com\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-01-07T05:55:58+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.9.0\n"
+"X-Domain: kaaryam\n"
+
+#. Theme Name of the theme
+msgid "Kaaryam"
+msgstr ""
+
+#. Theme URI of the theme
+msgid "https://wpnepal.com/themes/kaaryam/"
+msgstr ""
+
+#. Description of the theme
+msgid "Kaaryam is a WordPress theme that is fast and lightweight, designed for Full Site Editing. It is perfect for blogs, businesses, portfolios, and creative agencies, and is ideal for creating stunning event websites. You can experience speed optimization and unique layouts using the WordPress blocks editor."
+msgstr ""
+
+#. Author of the theme
+msgid "WordCamp Nepal"
+msgstr ""
+
+#. Author URI of the theme
+msgid "https://wpnepal.com/"
+msgstr ""
+
+#: functions.php:52
+msgctxt "Block pattern category"
+msgid "Pages"
+msgstr ""
+
+#: functions.php:53
+msgid "A collection of full page layouts."
+msgstr ""
+
+#: functions.php:59
+msgctxt "Block pattern category of Kaaryam Theme"
+msgid "Kaaryam"
+msgstr ""
+
+#: functions.php:60
+msgid "A collection of full patterns by Kaaryam Theme."
+msgstr ""
+
+#: patterns/404.php
+msgctxt "Pattern title"
+msgid "404 Error Page"
+msgstr ""
+
+#: patterns/404.php:10
+msgid "4"
+msgstr ""
+
+#: patterns/404.php:10
+msgid "0"
+msgstr ""
+
+#: patterns/404.php:14
+msgid "PhotoThis page could not be found. Maybe try a search?"
+msgstr ""
+
+#: patterns/cover-with-archive-title.php
+msgctxt "Pattern title"
+msgid "Archive Title"
+msgstr ""
+
+#: patterns/cover-with-post-title.php
+msgctxt "Pattern title"
+msgid "Post Title"
+msgstr ""
+
+#: patterns/events.php
+msgctxt "Pattern title"
+msgid "Events"
+msgstr ""
+
+#: patterns/events.php:15
+#: patterns/events.php:43
+msgid "DAY 1"
+msgstr ""
+
+#: patterns/events.php:15
+#: patterns/events.php:43
+msgid "- 13TH JAN"
+msgstr ""
+
+#: patterns/events.php:19
+msgid "Designers day"
+msgstr ""
+
+#: patterns/events.php:23
+#: patterns/events.php:51
+msgid "Join fellow designers, new and experienced, to enhance the world of design at the Designer Conference."
+msgstr ""
+
+#: patterns/events.php:28
+#: patterns/events.php:56
+msgid "Learn More"
+msgstr ""
+
+#: patterns/events.php:47
+msgid "Conference day"
+msgstr ""
+
+#: patterns/events.php:77
+msgid "Photo contest"
+msgstr ""
+
+#: patterns/events.php:81
+msgid "Show us your unique perspective and creative flair as you compete for exciting prizes."
+msgstr ""
+
+#: patterns/events.php:86
+msgid "Submit yours"
+msgstr ""
+
+#: patterns/events.php:113
+msgid "After party"
+msgstr ""
+
+#: patterns/events.php:117
+msgid "Unwind and socialize after a day of enriching experiences."
+msgstr ""
+
+#: patterns/events.php:122
+msgid "More details"
+msgstr ""
+
+#: patterns/features.php
+msgctxt "Pattern title"
+msgid "Features"
+msgstr ""
+
+#: patterns/features.php:21
+msgid "Call for Sponsors"
+msgstr ""
+
+#: patterns/features.php:37
+msgid "Call for Speakers"
+msgstr ""
+
+#: patterns/features.php:53
+msgid "Call for Micro Sponsors"
+msgstr ""
+
+#: patterns/features.php:69
+msgid "Designers Day"
+msgstr ""
+
+#: patterns/footer.php
+msgctxt "Pattern title"
+msgid "Footer"
+msgstr ""
+
+#: patterns/footer.php:11
+msgid "Stay informed about news & announcement on the Designer Conference 2024!"
+msgstr ""
+
+#: patterns/footer.php:15
+msgid "Join our mailing list to stay in the loop and get every news about WordCamp Nepal 2024"
+msgstr ""
+
+#: patterns/footer.php:20
+msgid "Subscribe Now"
+msgstr ""
+
+#: patterns/footer.php:25
+msgid "By subscribing to the mailing list, you accept the"
+msgstr ""
+
+#: patterns/footer.php:25
+msgid "Privacy Policy."
+msgstr ""
+
+#: patterns/footer.php:38
+#: patterns/header.php:17
+msgid "For Every Event"
+msgstr ""
+
+#: patterns/footer.php:53
+msgid "Proudly powered by"
+msgstr ""
+
+#: patterns/footer.php:53
+msgid "https://wpnepal.com"
+msgstr ""
+
+#: patterns/footer.php:53
+msgid "WPNepal"
+msgstr ""
+
+#: patterns/footer.php:53
+msgid "and"
+msgstr ""
+
+#: patterns/footer.php:53
+msgid "https://wordpress.org"
+msgstr ""
+
+#: patterns/footer.php:53
+msgid "WordPress"
+msgstr ""
+
+#: patterns/header.php
+msgctxt "Pattern title"
+msgid "Header"
+msgstr ""
+
+#: patterns/header.php:27
+msgid "Buy Ticket"
+msgstr ""
+
+#: patterns/hidden-post-meta.php
+msgctxt "Pattern title"
+msgid "Post meta"
+msgstr ""
+
+#: patterns/hidden-post-meta.php:20
+msgctxt "Prefix for the post author block: By author name"
+msgid "by"
+msgstr ""
+
+#: patterns/hidden-post-meta.php:25
+msgctxt "Prefix for the post category block: in category name"
+msgid "in "
+msgstr ""
+
+#: patterns/home.php
+msgctxt "Pattern title"
+msgid "Home"
+msgstr ""
+
+#: patterns/latest-news.php
+msgctxt "Pattern title"
+msgid "Latest News"
+msgstr ""
+
+#: patterns/latest-news.php:15
+msgid "About Event"
+msgstr ""
+
+#: patterns/latest-news.php:20
+msgid "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English."
+msgstr ""
+
+#: patterns/latest-news.php:24
+msgid "Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover."
+msgstr ""
+
+#: patterns/latest-news.php:30
+msgid "More Details"
+msgstr ""
+
+#: patterns/latest-news.php:38
+msgid "News"
+msgstr ""
+
+#: patterns/latest-news.php:61
+msgid "Read all the latest news"
+msgstr ""
+
+#: patterns/main-banner.php
+msgctxt "Pattern title"
+msgid "Main Banner"
+msgstr ""
+
+#: patterns/main-banner.php:13
+msgid "Explore"
+msgstr ""
+
+#: patterns/main-banner.php:22
+msgid "Connect"
+msgstr ""
+
+#: patterns/main-banner.php:31
+msgid "Elevate"
+msgstr ""
+
+#: patterns/main-banner.php:36
+msgid "World Largest Designer Conference"
+msgstr ""
+
+#: patterns/main-banner.php:40
+msgid "Join us for an inspiring journey at the Designer Conference. An opportunity to join like-minded enthusiasts in the vibrant world of web design."
+msgstr ""
+
+#: patterns/main-banner.php:47
+msgid "12th &amp; 13th"
+msgstr ""
+
+#: patterns/main-banner.php:51
+msgid "January, 2024"
+msgstr ""
+
+#: patterns/main-banner.php:62
+msgid "Get your tickets now"
+msgstr ""
+
+#: patterns/main-banner.php:73
+msgid "Hotel Pokhara Grande"
+msgstr ""
+
+#: patterns/main-banner.php:77
+msgid "Pokhara, Nepal"
+msgstr ""
+
+#: patterns/sidebar.php
+msgctxt "Pattern title"
+msgid "Sidebar"
+msgstr ""
+
+#: patterns/sidebar.php:19
+msgid "Recent Categories"
+msgstr ""
+
+#: patterns/sidebar.php:37
+msgid "Recent Posts"
+msgstr ""
+
+#: patterns/sidebar.php:55
+msgid "Post Archive"
+msgstr ""
+
+#: patterns/sidebar.php:75
+msgid "Catogery Tags"
+msgstr ""
+
+#: patterns/sidebar.php:93
+msgid "Connect With Us"
+msgstr ""
+
+#: patterns/speakers.php
+msgctxt "Pattern title"
+msgid "Speakers"
+msgstr ""
+
+#: patterns/speakers.php:11
+msgid "Speakers"
+msgstr ""
+
+#: patterns/speakers.php:15
+msgid "Meet the extraordinary individuals who will take the stage at our event. Join us as we bring you the very best in knowledge sharing, where expertise is seamlessly paired with engaging delivery."
+msgstr ""
+
+#: patterns/speakers.php:64
+msgid "Apply Now"
+msgstr ""
+
+#: patterns/sponsors.php
+msgctxt "Pattern title"
+msgid "Sponsors"
+msgstr ""
+
+#: patterns/sponsors.php:11
+#: patterns/sponsors.php:21
+#: patterns/sponsors.php:123
+msgid "Sponsors"
+msgstr ""
+
+#: patterns/sponsors.php:15
+msgid "Our event is made possible through the generous support of our esteemed sponsors. These organizations are more than just financial contributors; they are vital partners in our mission to foster progress and innovation."
+msgstr ""
+
+#: patterns/sponsors.php:21
+msgid "Platinum"
+msgstr ""
+
+#: patterns/sponsors.php:114
+#: patterns/sponsors.php:164
+msgid "Join With Us"
+msgstr ""
+
+#: patterns/sponsors.php:123
+msgid "Gold"
+msgstr ""
+
+#: patterns/sponsors.php:173
+msgid "View All Sponsors"
+msgstr ""
+
+#: styles/dark.json
+msgctxt "Color name"
+msgid "Foreground"
+msgstr ""
+
+#: styles/dark.json
+msgctxt "Color name"
+msgid "Background"
+msgstr ""
+
+#: styles/dark.json
+msgctxt "Color name"
+msgid "Primary"
+msgstr ""
+
+#: styles/dark.json
+msgctxt "Color name"
+msgid "Secondary"
+msgstr ""
+
+#: styles/dark.json
+msgctxt "Color name"
+msgid "Heading"
+msgstr ""
+
+#: styles/dark.json
+msgctxt "Color name"
+msgid "Text Link"
+msgstr ""
+
+#: styles/dark.json
+msgctxt "Color name"
+msgid "Link Hover"
+msgstr ""
+
+#: styles/dark.json
+msgctxt "Color name"
+msgid "Background Secondary "
+msgstr ""
+
+#: styles/dark.json
+msgctxt "Color name"
+msgid "Secondary Item"
+msgstr ""
+
+#: styles/dark.json
+msgctxt "Color name"
+msgid "Body Text"
+msgstr ""
+
+#: styles/dark.json
+msgctxt "Color name"
+msgid "Border"
+msgstr ""
+
+#: styles/dark.json
+msgctxt "Color name"
+msgid "Tertiary"
+msgstr ""
+
+#: styles/dark.json
+msgctxt "Color name"
+msgid "Input Field"
+msgstr ""
+
+#: styles/dark.json
+msgctxt "Color name"
+msgid "Boulder"
+msgstr ""
+
+#: styles/dark.json
+msgctxt "Color name"
+msgid "coffee"
+msgstr ""
+
+#: styles/dark.json
+msgctxt "Color name"
+msgid "Cyan"
+msgstr ""
+
+#: styles/dark.json
+msgctxt "Color name"
+msgid "Dark Blue"
+msgstr ""
+
+#: styles/dark.json
+msgctxt "Color name"
+msgid "Sky Blue"
+msgstr ""
+
+#: styles/dark.json
+msgctxt "Color name"
+msgid "Dark Green"
+msgstr ""
+
+#: styles/dark.json
+msgctxt "Color name"
+msgid "Lite Green"
+msgstr ""
+
+#: styles/dark.json
+msgctxt "Color name"
+msgid "Purple"
+msgstr ""
+
+#: styles/dark.json
+msgctxt "Color name"
+msgid "Dark Purple"
+msgstr ""
+
+#: styles/dark.json
+msgctxt "Color name"
+msgid "Orange"
+msgstr ""
+
+#: styles/dark.json
+msgctxt "Color name"
+msgid "Lite Red"
+msgstr ""
+
+#: styles/dark.json
+msgctxt "Color name"
+msgid "Hexadecimal"
+msgstr ""
+
+#: styles/dark.json
+msgctxt "Color name"
+msgid "Pink"
+msgstr ""
