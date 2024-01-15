@@ -1,0 +1,75 @@
+/* ==========================================================================
+   WooCommerce cart styles
+   ========================================================================== */
+
+#qodef-woo-page.qodef--cart,
+.yith-wcwl-form {
+
+	@include qodefScreenSize1024 {
+
+		.shop_table {
+
+			th,
+			td {
+
+				&.actions {
+
+					.coupon {
+						width: 100%;
+						float: none;
+
+						> * {
+							margin-bottom: 20px;
+						}
+					}
+
+					> .button {
+						float: none;
+					}
+				}
+			}
+		}
+
+		.cart-collaterals {
+
+			.shop_table {
+
+				th {
+					width: auto;
+				}
+			}
+		}
+	}
+
+	@include qodefScreenSize680 {
+
+		.shop_table {
+
+			th,
+			td {
+
+				&.product-thumbnail {
+					display: none;
+				}
+
+				&.product-subtotal {
+					display: none;
+				}
+
+				&.product-stock-status {
+					display: none;
+				}
+			}
+		}
+
+		.cart-collaterals {
+
+			.shop_table {
+
+				th {
+					width: auto;
+				}
+			}
+		}
+	}
+}

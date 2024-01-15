@@ -1,0 +1,63 @@
+/* ==========================================================================
+   Blog styles
+   ========================================================================== */
+
+.qodef-blog {
+
+	@include qodefScreenSize768 {
+
+		.qodef-blog-item {
+
+			.qodef-e-bottom-holder {
+				justify-content: space-between;
+				row-gap: 18px;
+				column-gap: 18px;
+			}
+
+			.qodef-e-left,
+			.qodef-e-right {
+				flex-basis: auto;
+			}
+
+			&.format-gallery {
+
+				.swiper-button-next,
+				.swiper-button-prev {
+					display: none;
+				}
+			}
+		}
+	}
+
+	@include qodefScreenSize680 {
+
+		.qodef-blog-item {
+
+			.qodef-e-right {
+				text-align: left;
+
+				.qodef-social-share {
+					align-items: flex-start;
+				}
+			}
+
+			&.format-link {
+
+				.qodef-e-link {
+					align-items: flex-start;
+					text-align: start;
+					padding: 60px 40px;
+				}
+			}
+
+			&.format-quote {
+
+				.qodef-e-quote {
+					align-items: flex-start;
+					text-align: start;
+					padding: 60px 40px;
+				}
+			}
+		}
+	}
+}

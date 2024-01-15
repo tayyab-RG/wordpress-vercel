@@ -1,0 +1,292 @@
+/* ==========================================================================
+   Blog styles
+   ========================================================================== */
+
+.qodef-blog {
+	@include qodefRelativeLayout();
+
+	.qodef-blog-item {
+		@include qodefRelativeLayout();
+
+		margin: 0 0 100px;
+
+		.qodef-e-inner,
+		.qodef-e-media,
+		.qodef-e-content {
+			@include qodefRelativeLayout();
+		}
+
+		.qodef-e-media {
+
+			> * {
+				margin-bottom: var(--qodef-media-margin-bottom, 35px);
+			}
+
+			iframe {
+				display: block;
+				height: 100%;
+			}
+		}
+
+		.qodef-e-media-image {
+			display: inline-block;
+			max-width: 100%;
+			position: relative;
+			vertical-align: top;
+
+			a,
+			img {
+				display: block;
+				width: 100%;
+			}
+
+			&.qodef--background {
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				width: 100%;
+
+				img {
+					visibility: hidden;
+				}
+			}
+		}
+
+		.qodef-e-title {
+			margin: 0;
+		}
+
+		.qodef-e-excerpt {
+			margin: 22px 0 0;
+		}
+
+		.qodef-e-top-holder {
+			margin-bottom: 14px;
+		}
+
+		.qodef-e-text { // gutenberg
+
+			&:after {
+				clear: both;
+				content: '';
+				display: table;
+			}
+		}
+
+		.qodef-e-bottom-holder {
+			align-items: center;
+			display: flex;
+			flex-wrap: wrap;
+			margin-top: var(--qodef-bottom-holder-margin-top, 43px);
+		}
+
+		.qodef-e-left,
+		.qodef-e-right {
+			flex-basis: 50%;
+		}
+
+		.qodef-e-left {
+
+			@at-root body:not([class*="artorias-core"]) & {
+				flex-basis: 100%;
+			}
+		}
+
+		.qodef-e-right {
+			justify-content: flex-end;
+			text-align: right;
+
+			.qodef-social-share {
+				align-items: flex-end;
+
+				.qodef-share-link {
+					color: var(--qode-main-color);
+					display: block;
+					transform: translateY(0);
+					transition: $color-transition, .3s ease;
+
+					&:hover {
+						transform: translateY(-3px);
+					}
+				}
+			}
+		}
+
+		.qodef-e-post-link {
+			@include qodefAbsoluteLayout();
+		}
+
+		&.sticky {
+
+			.qodef-e-title {
+
+				a {
+					position: relative;
+					text-decoration: underline;
+
+					&:after {
+						content: '*';
+						font-size: 1.5em;
+						position: absolute;
+						right: -0.5em;
+						top: 0;
+					}
+				}
+			}
+		}
+
+		&.format-video {
+
+			// html element in elementor iframe
+			@at-root html.elementor-html & {
+
+				.wp-video {
+					max-width: 100%;
+				}
+
+				video {
+					height: auto;
+				}
+			}
+
+			.qodef-e-media-image {
+				align-items: center;
+				display: grid;
+				grid-template-areas: "stack";
+				grid-template-columns: minmax(0, auto);
+				grid-template-rows: minmax(0, auto);
+				justify-items: center;
+
+				img,
+				.qodef-e-media-icon,
+				.qodef-e-video-url {
+					grid-area: stack;
+				}
+
+				.qodef-e-media-icon {
+					color: var(--qode-main-color);
+					display: flex;
+				}
+
+				.qodef-e-video-url {
+					@include qodefAbsoluteLayout();
+				}
+			}
+		}
+
+		&.format-audio {
+
+			// html element in elementor iframe
+			@at-root html.elementor-html & {
+
+				audio {
+					display: block;
+				}
+			}
+
+			.qodef-e-media-image {
+				width: 100%;
+
+				img {
+					width: 100%;
+				}
+			}
+
+			.qodef-e-media-audio {
+				bottom: var(--qodef-media-margin-bottom, 35px); // needs to be same as media margin bottom
+				left: 0;
+				margin: 0;
+				position: absolute;
+				width: 100%;
+			}
+		}
+
+		&.format-link {
+
+			.qodef-e-link {
+				align-items: center;
+				background-color: #000000;
+				border: 1px solid $border-color;
+				display: flex;
+				flex-direction: column;
+				padding: 6% 12% 7%;
+				position: relative;
+				text-align: center;
+			}
+
+			.qodef-e-link-text {
+				@include qodefAdditionalText($font-size: 21px, $line-height: 33px);
+
+				margin: 0;
+				position: relative;
+			}
+
+			.qodef-e-link-icon {
+				color: var(--qode-main-color);
+				flex-shrink: 0;
+				margin-bottom: 36px;
+			}
+
+			.qodef-e-link-url {
+				@include qodefAbsoluteLayout();
+
+				z-index: 1;
+			}
+		}
+
+		&.format-quote {
+
+			.qodef-e-quote {
+				align-items: center;
+				background-color: #000000;
+				border: 1px solid $border-color;
+				display: flex;
+				flex-direction: column;
+				padding: 5.5% 12% 5% 12%;
+				position: relative;
+				text-align: center;
+			}
+
+			.qodef-e-quote-text {
+				@include qodefAdditionalText($font-size: 21px, $line-height: 33px);
+
+				margin: 0;
+				position: relative;
+			}
+
+			.qodef-e-quote-author {
+				color: $white;
+				display: block;
+				margin: 52px 0 0;
+				position: relative;
+			}
+
+			.qodef-e-quote-author-tagline {
+				margin: 6px 0 0;
+			}
+
+			.qodef-e-quote-icon {
+				color: var(--qode-main-color);
+				flex-shrink: 0;
+				margin-bottom: 37px;
+			}
+
+			.qodef-e-quote-url {
+				@include qodefAbsoluteLayout();
+
+				z-index: 1;
+			}
+		}
+	}
+
+	&.qodef-items--fixed {
+
+		article {
+
+			.qodef-e-media,
+			.qodef-e-media-image {
+				height: 100%;
+			}
+		}
+	}
+}

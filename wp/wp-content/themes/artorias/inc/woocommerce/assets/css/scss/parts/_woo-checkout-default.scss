@@ -1,0 +1,97 @@
+/* ==========================================================================
+   WooCommerce checkout styles
+   ========================================================================== */
+
+#qodef-woo-page {
+
+	&.qodef--checkout {
+
+		.woocommerce-form-coupon-toggle {
+
+			.woocommerce-info {
+				flex-direction: column;
+			}
+		}
+
+		.woocommerce-form-coupon {
+
+			> p {
+				margin-bottom: 10px;
+			}
+		}
+
+		.woocommerce-checkout {
+			margin-top: 40px;
+		}
+
+		#customer_details {
+
+			h3 {
+				@include qodefWooTemplatesHeadingStyle(0 0 20px, true);
+			}
+		}
+
+		#order_review_heading {
+			@include qodefWooTemplatesHeadingStyle(0 0 20px, true);
+		}
+
+		.woocommerce-checkout-payment {
+			margin-top: 30px;
+
+			.place-order {
+				margin-top: 30px;
+			}
+
+			.woocommerce-terms-and-conditions-wrapper {
+				margin-bottom: 15px;
+			}
+		}
+
+		.wc_payment_methods {
+			@include qodefWooTemplatesListStyles();
+
+			li {
+				padding-left: 25px;
+				padding-right: 25px;
+			}
+
+			.input-radio {
+				position: absolute;
+				top: 18px;
+				left: 0;
+				margin: 0;
+			}
+
+			label {
+				@include qodefWooLabelsHeadingStyle();
+
+				margin: 0;
+				cursor: pointer;
+			}
+		}
+
+		.wc_payment_method {
+
+			&:not(.payment_method_paypal) {
+
+				p {
+					margin: 10px 0 0 0;
+				}
+			}
+
+			&.payment_method_paypal {
+
+				.input-radio {
+					top: 61px;
+				}
+
+				label {
+
+					img {
+						margin: 0 15px 0 10px;
+					}
+				}
+			}
+		}
+	}
+}

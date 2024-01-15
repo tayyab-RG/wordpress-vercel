@@ -1,0 +1,27 @@
+/* ==========================================================================
+   404 page responsive styles
+   ========================================================================== */
+
+.error404 {
+
+	@include qodefScreenSize1024() {
+
+		#qodef-page-outer {
+			height: calc(100vh - 70px);
+
+			@at-root .admin-bar#{&} {
+				height: calc(100vh - 70px - 32px);
+			}
+		}
+	}
+
+	@media only screen and (max-width: 782px) {
+
+		#qodef-page-outer {
+
+			@at-root .admin-bar#{&} {
+				height: calc(100vh - 70px - 46px);
+			}
+		}
+	}
+}

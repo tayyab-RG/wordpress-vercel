@@ -1,0 +1,11 @@
+/* ==========================================================================
+   Title responsive styles
+   ========================================================================== */
+
+.qodef-page-title {
+
+	@include qodefScreenSize1024() {
+		width: calc(100% - (var(--qodef-title-margin-responsive, 0px) * 2)) !important;
+		margin: 0 var(--qodef-title-margin-responsive, 0px);
+	}
+}

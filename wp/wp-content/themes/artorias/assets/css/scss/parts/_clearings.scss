@@ -1,0 +1,14 @@
+/* ==========================================================================
+   4.0 Clearings styles
+   ========================================================================== */
+
+.clear,
+.comment-content,
+.nav-links,
+.pagination,
+.comment-author,
+.widget-area,
+.widget,
+.comment-meta {
+    @include qodefClearFix;
+}

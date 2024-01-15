@@ -1,0 +1,216 @@
+/* ==========================================================================
+   WooCommerce product list styles
+   ========================================================================== */
+
+.qodef-woo-product-list {
+	@include qodefRelativeLayout();
+
+	ul.products {
+		position: relative;
+		display: flex;
+		align-items: flex-start;
+		flex-wrap: wrap;
+		padding: 0;
+		margin: 0 -#{$default-grid-gutter-size}px;
+		list-style: none;
+		clear: both;
+
+		> .product {
+			padding: 0 #{$default-grid-gutter-size}px;
+			margin: 0 0 #{2 * $default-grid-gutter-size}px;
+
+			&:hover {
+
+				.price {
+					visibility: hidden;
+					opacity: 0;
+					transform: translateY(30px);
+				}
+
+				.qodef-woo-product-actions {
+					visibility: visible;
+					opacity: 1;
+					transform: translateY(0px);
+				}
+			}
+		}
+
+		@for $i from 0 to $grid-columns-layout-size {
+			$column: $i + 1;
+
+			&.columns-#{$column} {
+
+				> .product {
+					width: 100%/$column;
+				}
+			}
+		}
+	}
+
+	@for $i from 0 to length($grid-columns-gutter-label) {
+		&.qodef-gutter--#{nth($grid-columns-gutter-label,$i+1)} {
+			$gutter-size: nth($grid-columns-gutter-size, $i+1);
+
+			ul.products {
+				margin: 0 -#{$gutter-size}px;
+
+				> .product {
+					padding: 0 #{$gutter-size}px;
+					margin: 0 0 #{2 * $gutter-size}px;
+				}
+			}
+		}
+	}
+
+	.qodef-e-inner {
+		position: relative;
+		display: inline-block;
+		vertical-align: top;
+		width: 100%; // ie fix
+
+		.touchevents & {
+			cursor: pointer;
+		}
+
+		&:hover {
+
+			.qodef-woo-product-image-inner {
+				opacity: 1;
+			}
+		}
+	}
+
+	.qodef-woo-product-image {
+		position: relative;
+		display: inline-block;
+		vertical-align: top;
+		width: 100%;
+
+		img {
+			display: block;
+			width: 100%;
+			border: 1px solid var(--qode-main-color);
+		}
+
+		> .woocommerce-LoopProduct-link {
+			@include qodefAbsoluteLayout();
+		}
+	}
+
+	.qodef-woo-product-image-inner {
+		@include qodefAbsoluteLayout();
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		padding: 20px 40px 35px;
+		background-color: rgba($white, .12);
+		text-align: center;
+		opacity: 0;
+		transition: $opacity-transition;
+
+		> * {
+			position: relative;
+			z-index: 3;
+		}
+
+		.qodef-woo-product-title {
+			color: $white;
+
+			a {
+				color: inherit;
+
+				&:hover {
+					color: var(--qode-main-color);
+				}
+			}
+		}
+
+
+		.qodef-e-info {
+
+			> * {
+				color: $white;
+			}
+
+			a {
+
+				&:hover {
+					color: var(--qode-main-color);
+				}
+			}
+		}
+
+		> .price {
+			color: $white;
+		}
+	}
+
+	.qodef-woo-product-content {
+		@include qodefRelativeLayout();
+		text-align: center;
+		margin: 29px 0 15px;
+	}
+
+	.qodef-woo-product-content-inner {
+		display: grid;
+		grid-template-areas: "stack";
+		grid-template-columns: minmax(0, auto);
+		grid-template-rows: minmax(0, auto);
+		justify-items: center;
+		margin: 4px 0 0;
+		overflow: hidden;
+
+		.price,
+		.qodef-woo-product-actions {
+			grid-area: stack;
+			transition: .35s opacity ease-out, .5s transform $special-ease-move, .5s visibility;
+		}
+
+		.qodef-woo-product-actions {
+			opacity: 0;
+			transform: translateY(30px);
+			visibility: hidden;
+		}
+
+		.price {
+			margin: 0 !important;
+			visibility: visible;
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		.added_to_cart,
+		.button {
+			@include qodefAdditionalText($important: !important, $font-size: 16px, $line-height: 27px);
+			background-color: transparent !important;
+			border: 0  !important;
+			padding: 0 !important;
+
+			 &:after,
+			 &:before{
+				display: none !important;
+			}
+
+			&:hover {
+				color: $silver!important;
+			}
+		}
+	}
+
+	.qodef-woo-product-title {
+		transition: $color-transition;
+	}
+
+	.qodef-woo-ratings {
+		margin-top: 9px;
+	}
+
+	select {
+		min-width: 50%;
+	}
+
+	.select2 {
+		margin: 0;
+	}
+}

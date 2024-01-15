@@ -1,0 +1,72 @@
+/* ==========================================================================
+   404 page styles
+   ========================================================================== */
+
+.error404 {
+
+	#qodef-page-outer {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		height: 100vh;
+		justify-content: center;
+
+		@at-root .admin-bar#{&} {
+			height: calc(100vh - 32px);
+		}
+	}
+
+	.qodef-page-title {
+		text-align: center;
+
+		@at-root body:not([class*="artorias-core"])#{&} {
+			display: none;
+		}
+	}
+
+	#qodef-page-inner {
+		padding: 0;
+		width: 100%;
+	}
+
+	#qodef-content-bottom {
+		display: none;
+	}
+}
+
+#qodef-404-page {
+	@include qodefRelativeLayout();
+
+	padding: 50px 10% 50px 10%;
+	text-align: center;
+
+	.qodef-404-title {
+		margin: 0;
+	}
+
+	.qodef-404-text {
+		display: block;
+		margin: 14px auto 0;
+
+		@media only screen and (min-width: $screen-size-1025) {
+			max-width: 50%;
+		}
+	}
+
+	.qodef-404-button {
+		display: inline-block;
+		margin-top: 52px;
+		position: relative;
+		vertical-align: top;
+
+		a {
+			@at-root body:not([class*="artorias-core"]) & {
+				@include qodefButtonOutlinedColor();
+
+				&:hover {
+					@include qodefButtonOutlinedHoverColor();
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,150 @@
+/* ==========================================================================
+   9.0 Magnific Popup styles
+   ========================================================================== */
+
+$mp-item-vertical-offset: 40px;
+$mp-close-svg-height: 25px;
+$mp-arrows-horizontal-offset: 30px;
+
+button {
+
+	&.mfp-arrow {
+		color: $white;
+		height: 51px !important;
+		margin: 0 !important;
+		opacity: 1 !important;
+		top: calc(50% - 25px) !important;
+		width: 26px !important;
+		transition: transform .35s $special-ease-move;
+		transform: translateX(0px);
+
+		svg {
+			display: block;
+			pointer-events: none;
+			width: 100%;
+		}
+
+		&:before,
+		&:after {
+			display: none !important;
+		}
+
+		&.mfp-arrow-left {
+			left: $mp-arrows-horizontal-offset;
+
+			@include qodefScreenSize1024() {
+				left: calc(#{$mp-arrows-horizontal-offset} + #{$side-padding-responsive});
+			}
+
+			&:hover {
+				transform: translateX(-7px);
+			}
+		}
+
+		&.mfp-arrow-right {
+			right: $mp-arrows-horizontal-offset;
+
+			@include qodefScreenSize1024() {
+				right: calc(#{$mp-arrows-horizontal-offset} + #{$side-padding-responsive});
+			}
+
+			svg {
+				transform: rotate(180deg);
+			}
+
+			&:hover {
+				transform: translateX(7px);
+			}
+		}
+	}
+
+	&.mfp-close {
+		color: $white;
+		height: $mp-close-svg-height !important;
+		margin: 0 !important;
+		opacity: 1 !important;
+		padding: 0 !important;
+		right: 0 !important;
+		top: #{($mp-item-vertical-offset - $mp-close-svg-height) / 2} !important;
+		transform: scaleX(1);
+		transition: transform .5s $special-ease;
+		width: auto !important;
+
+		@at-root .mfp-iframe-holder & {
+			top: -#{$mp-item-vertical-offset - (($mp-item-vertical-offset - $mp-close-svg-height) / 2)} !important;
+		}
+
+		&:hover {
+			transform: scaleX(1.2);
+		}
+
+		&:before,
+		&:after {
+			display: none !important;
+		}
+
+		svg {
+			display: block;
+			height: 100%;
+			pointer-events: none;
+			width: auto;
+		}
+	}
+}
+
+.mfp-container {
+	padding: 0 $side-padding-responsive !important;
+}
+
+.mfp-figure {
+	position: relative;
+
+	figure {
+		padding: $mp-item-vertical-offset 0;
+	}
+
+	figcaption {
+		margin: 0 !important;
+	}
+
+	img {
+		max-height: calc(100vh - #{$mp-item-vertical-offset * 2}) !important;
+		padding: 0 !important;
+	}
+
+	&:after {
+		background: transparent !important;
+		box-shadow: none !important;
+	}
+}
+
+.mfp-bottom-bar {
+	line-height: $mp-item-vertical-offset !important;
+	margin-top: -#{$mp-item-vertical-offset} !important;
+
+	.mfp-title,
+	.mfp-counter {
+		@include qodefHeadingStyle(h6);
+
+		color: $white;
+		line-height: inherit !important;
+	}
+}
+
+.mfp-fade.mfp-bg,
+.mfp-fade.mfp-wrap {
+	opacity: 0;
+	transition: opacity .35s ease-out;
+
+	&.mfp-ready {
+		opacity: 1;
+	}
+
+	&.mfp-removing {
+		opacity: 0;
+	}
+}
+
+.mfp-fade.mfp-bg {
+	background-color: rgba(0, 0, 0, .8);
+}

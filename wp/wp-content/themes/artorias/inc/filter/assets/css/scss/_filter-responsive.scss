@@ -1,0 +1,27 @@
+/* ==========================================================================
+   Filter responsive styles
+   ========================================================================== */
+
+.qodef-m-filter {
+
+	@include qodefScreenSize1024() {
+
+		.qodef-m-filter-item {
+			padding: 12px 47px 12px calc(47px - 0.02em);
+		}
+	}
+
+	@include qodefScreenSize680() {
+
+		.qodef-m-filter-items {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+
+		.qodef-m-filter-item {
+			border-bottom: none;
+			border-right: 1px solid var(--qode-main-color);
+			width: 100%;
+		}
+	}
+}

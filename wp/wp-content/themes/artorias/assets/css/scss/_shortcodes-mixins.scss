@@ -1,0 +1,248 @@
+/* ==========================================================================
+   Button mixins - start
+   ========================================================================== */
+
+@mixin qodefButtonDefaultStyle($important: null) {
+	font-size: 17px $important;
+	letter-spacing: 0.02em $important;
+	font-family: $heading-font $important;
+	font-weight: 700 $important;
+	line-height: calc(30 / 17) $important;
+	position: relative $important;
+	display: inline-flex $important;
+	vertical-align: middle $important;
+	width: auto $important;
+	margin: 0 $important;
+	text-align: center $important;
+	text-decoration: none $important;
+	text-transform: uppercase $important;
+	border-radius: 0 $important;
+	outline: none $important;
+	transition: $color-transition, $background-color-transition, $border-color-transition $important;
+
+	&:after {
+		$offset: 3px;
+		content: '';
+		display: block;
+		width: calc(100% - #{$offset * 2});
+		height: 5px;
+		background-color: currentColor;
+		position: absolute;
+		bottom: $offset;
+		left: $offset;
+		pointer-events: none;
+	}
+}
+
+@mixin qodefButtonTextualStyle() {
+	background-color: transparent;
+	border: 0;
+	color: $white;
+	font-size: 21px;
+	letter-spacing: 0.06em;
+	padding: 0 !important;
+
+	&:after {
+		bottom: -1px;
+		left: 0;
+		width: calc(100% - 0.06em);
+	}
+}
+
+@mixin qodefButtonSearchIconStyle($color: null, $hover-color: null, $position: null, $important:null) {
+	display: inline-flex $important;
+	align-items: center $important;
+	justify-content: center $important;
+	width: 26px $important;
+	height: 100% $important;
+	padding: 0 $important;
+	border: 0 $important;
+
+	@if ($position == inside) {
+		position: absolute $important;
+		top: 0 $important;
+		right: 0 $important;
+		height: 100% $important;
+		background-color: transparent $important;
+	}
+
+	@if ($color) {
+		color: $color $important;
+	}
+
+	&:hover {
+
+		@if ($hover-color) {
+			color: $hover-color $important;
+		}
+	}
+
+	svg {
+		display: block;
+		width: 14px;
+		height: auto;
+	}
+}
+
+@mixin qodefButtonSize($size: normal, $letter-spacing: 0.02em, $important: null) {
+	@if ($size == 'small') {
+		padding: 8px 59px 8px calc(59px - #{$letter-spacing}) $important;
+	} @else if ($size == 'normal') {
+		padding: 10px 69px 10px calc(69px - #{$letter-spacing}) $important;
+	} @else if ($size == 'large') {
+		padding: 12px 79px 12px calc(79px - #{$letter-spacing}) $important;
+	} @else if ($size == 'full') {
+		width: 100% $important;
+		padding: 10px 20px 12px calc(20px - #{$letter-spacing}) $important;
+		justify-content: center $important;
+		text-align: center $important;
+	}
+}
+
+@mixin qodefButtonFilledColor($important: null) {
+	color: $white $important;
+	background-color: $gray $important;
+	border: 1px solid $white $important;
+}
+
+@mixin qodefButtonFilledHoverColor($important: null) {
+	//color: #ffffff $important;
+	//background-color: var(--qode-main-color) $important;
+}
+
+@mixin qodefButtonOutlinedColor($important: null) {
+	color: $white $important;
+	background-color: transparent $important;
+	border: 1px solid $white $important;
+	isolation: isolate;
+
+	&:before {
+		$offset: 3px;
+		content: '';
+		display: block;
+		width: calc(100% - #{$offset * 2});
+		height: calc(100% - #{$offset * 2 } - 4px);
+		background-color: currentColor;
+		position: absolute;
+		top: $offset;
+		left: $offset;
+		transition: clip-path .6s cubic-bezier(0.45, 0.2, 0.01, 0.96);
+		pointer-events: none;
+		mix-blend-mode: difference;
+      	clip-path: inset(100% 0px 0px 0px);
+	}
+}
+
+@mixin qodefButtonOutlinedHoverColor($important: null) {
+	//color: #ffffff $important;
+	//background-color: var(--qode-main-color) $important;
+	//border-color: var(--qode-main-color) $important;
+
+	&:before {
+		clip-path: inset(0% 0px 0px 0px);
+	}
+}
+
+/* ==========================================================================
+   Button mixins - end
+   ========================================================================== */
+
+/* ==========================================================================
+   Tabs mixins - start
+   ========================================================================== */
+
+@mixin qodefTabs() {
+	$letter-spacing: 0.02em;
+
+	position: relative;
+	display: flex;
+	align-items: center;
+	margin: 0;
+	padding: 0;
+	list-style: none; // woo
+
+	li {
+		margin: 0;
+		padding: 0;
+
+		a {
+			@include qodefHeadingStyle($heading: h6);
+			@include qodefButtonSize($size: large);
+
+			letter-spacing: $letter-spacing;
+			position: relative;
+			display: block;
+			transition: $color-transition, $background-color-transition;
+			border-top: 1px solid $border-color;
+			border-left: 1px solid $border-color;
+
+			&:after {
+				$offset: 3px;
+
+				content: '';
+				display: block;
+				width: calc(100% - #{$offset * 2});
+				height: 5px;
+				background-color: currentColor;
+				position: absolute;
+				bottom: $offset;
+				left: $offset;
+				transform: scaleX(0);
+				transition: transform .8s $special-ease;
+				transform-origin: left;
+			}
+		}
+
+		&:last-child {
+
+			a {
+				border-right: 1px solid $border-color;
+			}
+		}
+
+		a:hover,
+		&.active a, // woo
+		&.ui-state-active a, // tabs sc
+		&.ui-state-hover a { // tabs sc
+
+			&:after {
+				transform: scaleX(1);
+			}
+		}
+	}
+
+	@include qodefScreenSize768() {
+		flex-direction: column;
+		align-items: stretch;
+
+		li {
+
+			a {
+				text-align: center;
+				border-right: 1px solid $border-color;
+			}
+		}
+	}
+}
+
+/* ==========================================================================
+   Tabs mixins - end
+   ========================================================================== */
+
+/* ==========================================================================
+   Animation mixins - start
+   ========================================================================== */
+
+@mixin keyframes($name) {
+	@-webkit-keyframes #{$name} {
+		@content;
+	}
+
+	@keyframes #{$name} {
+		@content;
+	}
+}
+
+/* ==========================================================================
+   Animation mixins - end
+   ========================================================================== */

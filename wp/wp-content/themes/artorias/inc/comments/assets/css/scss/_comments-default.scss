@@ -1,0 +1,218 @@
+/* ==========================================================================
+   Comments styles
+   ========================================================================== */
+
+#qodef-page-comments {
+	@include qodefRelativeLayout();
+
+	margin-top: 100px;
+
+	.qodef-page-comments-not-found {
+		margin: 0;
+	}
+}
+
+#qodef-page-comments-list {
+	@include qodefRelativeLayout();
+
+	margin-bottom: 93px;
+
+	.qodef-m-title {
+		border: 1px solid white;
+		margin: 0 0 71px 0;
+		padding: 21px 38px;
+	}
+
+	.qodef-m-comments {
+		list-style: none;
+		margin: 0;
+		padding: 0 39px;
+
+		> .qodef-comment-item {
+
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+	}
+
+	.qodef-comment-item {
+		margin: 68px 0 0 0;
+		padding: 0;
+
+		.children {
+			list-style: none;
+			margin: 0;
+			padding: 0 0 0 136px; // gravatar width + gravatar right padding
+		}
+
+		.qodef-e-inner {
+			align-items: flex-start;
+			display: flex;
+		}
+
+		.qodef-e-image {
+			flex-shrink: 0;
+			margin-right: 25px;
+
+			img {
+				display: block;
+			}
+		}
+
+		.qodef-e-content {
+			@include qodefRelativeLayout();
+		}
+
+		.qodef-e-content-top {
+			display: flex;
+			justify-content: space-between;
+			position: relative;
+			top: -2px;
+
+			&-left {
+				display: flex;
+				flex-direction: column;
+			}
+
+			&-right {
+				position: relative;
+				top: -2px;
+			}
+		}
+
+		.qodef-e-title {
+			margin: 0 0 1px 0;
+		}
+
+		.qodef-e-date {
+
+			a {
+				color: $white;
+
+				&:hover {
+					color: $white;
+				}
+			}
+		}
+
+		.qodef-e-text {
+			margin: 24px 0 0 0;
+			padding-right: 130px;
+
+			p {
+				margin: 0;
+			}
+
+			img {
+				margin-bottom: 5px;
+				margin-top: 5px;
+			}
+		}
+
+		.qodef-e-links {
+			column-gap: 24px;
+			display: flex;
+			margin-left: auto;
+			transform: translateX(39px);
+
+			> * {
+				@include qodefButtonDefaultStyle();
+				@include qodefButtonTextualStyle();
+
+				font-size: 17px;
+			}
+
+			a {
+				&:hover {
+					&:after {
+						animation: qode-line-draw 1s cubic-bezier(.16, .78, .11, .95);
+					}
+				}
+			}
+		}
+	}
+
+	.qodef-m-pagination {
+		margin-top: 50px;
+	}
+}
+
+#respond {
+	@include qodefRelativeLayout();
+
+	@at-root .qodef-comment-item & {
+		margin-top: 68px;
+
+		.comment-reply-title {
+			@include qodefHeadingStyle($heading: h5); // match comment author heading
+
+			display: flex;
+			justify-content: space-between;
+			align-items: baseline;
+
+			small {
+
+				a {
+					@include qodefButtonDefaultStyle();
+					@include qodefButtonTextualStyle();
+
+					font-size: 17px;
+				}
+			}
+		}
+	}
+
+	.comment-reply-title {
+		display: flex;
+		justify-content: space-between;
+		margin: 0;
+	}
+
+	.qodef-comment-form {
+
+		.comment-notes,
+		.logged-in-as {
+			margin: 5px 0 23px 0;
+		}
+
+		.comment-form-comment,
+		.comment-form-author,
+		.comment-form-email,
+		.comment-form-url,
+		.form-submit {
+			margin: 0;
+		}
+
+		.form-submit {
+
+			button {
+
+				@at-root body:not([class*="artorias-core"]) & {
+					@include qodefButtonOutlinedColor();
+					@include qodefButtonSize($size: full);
+
+					&:hover {
+						@include qodefButtonOutlinedHoverColor();
+					}
+				}
+			}
+		}
+
+		.comment-form-cookies-consent {
+			align-items: flex-start;
+			display: flex;
+			margin: -3px 0 17px 0;
+			position: relative;
+
+			input[type="checkbox"] {
+				flex-shrink: 0;
+				margin-top: 5px;
+			}
+
+			label {
+				margin: 0;
+			}
+		}
+	}
+}

@@ -1,0 +1,791 @@
+/* ==========================================================================
+   Typography mixins
+   ========================================================================== */
+
+@mixin qodefParagraphStyle($color: $text-color) {
+	font-family: $text-font;
+	font-size: $text-font-size;
+	line-height: $text-line-height-em;
+	font-weight: $text-font-weight;
+	color: $color;
+}
+
+@mixin qodefLinkStyle($important: null) {
+	color: $white $important;
+	text-decoration: none;
+	transition: $color-transition;
+	cursor: pointer;
+
+	&:focus,
+	&:hover {
+		color: $gray $important;
+	}
+}
+
+@mixin qodefBlockquoteStyle($important: null) {
+	@include qodefAdditionalText($font-size: 20px, $line-height: 32px);
+
+	position: relative;
+	padding: 13px 20px 20px 137px $important; // padding-left = quote width + quote right padding
+	border: none $important; // gutenberg
+
+	@include qodefScreenSize680 {
+		padding: 70px 0px 10px 0 $important;
+	}
+
+	&.wp-block-quote.is-large,
+	&.wp-block-quote.is-style-large {
+		margin: 0; // gutenberg
+		padding: 13px 20px 20px 137px $important; // gutenberg
+
+		@include qodefScreenSize680 {
+			padding: 70px 0px 10px 0 $important;
+		}
+	}
+
+	&.wp-block-pullquote {
+		padding: 25px !important; // gutenberg
+		text-align: center $important;
+
+		p {
+			font-size: 28px !important;
+			line-height: 1.6 !important;
+		}
+
+		&.alignleft {
+			max-width: 420px;
+		}
+
+		&.alignright {
+			max-width: 420px;
+		}
+	}
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 20px;
+		left: 34px;
+		height: 51px;
+		width: 69px;
+		background-image: url('../img/quote.svg');
+		background-position: top left;
+		background-repeat: no-repeat;
+		z-index: -1;
+
+		@include qodefScreenSize680 {
+			top: 10px;
+			left: 0;
+		}
+	}
+}
+
+@mixin qodefH1Style($important: null) {
+	font-size: 50px $important;
+	line-height: #{(55 / 50)}em $important;
+
+	@include qodefScreenSize1440() {
+		font-size: 42px $important;
+		line-height: 48px $important;
+	}
+}
+
+@mixin qodefH2Style($important: null) {
+	font-size: 38px $important;
+	line-height: #{(44 / 38)}em $important;
+
+	@include qodefScreenSize1440() {
+		font-size: 32px $important;
+		font-weight: 37px $important;
+	}
+}
+
+@mixin qodefH3Style($important: null) {
+	font-size: 33px $important;
+	line-height: #{(42 / 33)}em $important;
+
+	@include qodefScreenSize1440() {
+		font-size: 28px $important;
+		line-height: 33px $important;
+	}
+}
+
+@mixin qodefH4Style($important: null) {
+	font-size: 25px $important;
+	line-height: #{(36 / 25)}em $important;
+}
+
+@mixin qodefH5Style($important: null) {
+	font-size: 19px $important;
+	line-height: #{(26 / 19)}em $important;
+}
+
+@mixin qodefH6Style($important: null) { // fixme
+	font-size: 17px $important;
+	line-height: #{(24 / 17)}em $important;
+}
+
+@mixin qodefInfoStyle($heading: true) {
+
+	@if ($heading) {
+		@include qodefHeadingStyle(h6);
+	} @else {
+		@include qodefParagraphStyle();
+	}
+
+	display: inline-flex;
+	vertical-align: middle;
+	flex-wrap: wrap;
+}
+
+@mixin qodefAdditionalHeading($important: null, $font-size: 17px, $line-height: 30px, $font-weight: 700, $color: var(--qode-main-color), $text-transform: uppercase) {
+	font-family: $heading-font $important;
+	font-size: $font-size $important;
+	line-height: #{($line-height/$font-size)}em $important;
+	font-weight: $font-weight $important;
+	letter-spacing: 0.02em $important;
+	text-transform: $text-transform $important;
+
+	@if (null != $color) {
+		color: $color $important;
+	}
+}
+
+@mixin qodefAdditionalText($important: null, $font-size: 18px, $line-height: 36px, $font-weight: 400, $color: var(--qode-main-color)) {
+	font-family: $text-font $important;
+	font-size: $font-size $important;
+	line-height: #{($line-height/$font-size)}em $important;
+	font-weight: $font-weight $important;
+	letter-spacing: normal $important;
+
+	@if (null != $color) {
+		color: $color $important;
+	}
+}
+
+@mixin qodefHeadingStyle($heading: null, $with-color: true, $with-link-style: false, $important: null) {
+	font-family: $heading-font $important;
+	font-weight: 700 $important;
+	text-transform: uppercase $important;
+	letter-spacing: 0.06em;
+
+	@if ($with-color) {
+		color: $white $important;
+	}
+
+	@if ($heading == 'h1') {
+		@include qodefH1Style($important);
+	} @else if ($heading == 'h2') {
+		@include qodefH2Style($important);
+	} @else if ($heading == 'h3') {
+		@include qodefH3Style($important);
+	} @else if ($heading == 'h4') {
+		@include qodefH4Style($important);
+	} @else if ($heading == 'h5') {
+		@include qodefH5Style($important);
+	} @else if ($heading == 'h6') {
+		@include qodefH6Style($important);
+	}
+
+	@if ($with-link-style) {
+
+		a {
+			@include qodefTypographyLayout();
+
+			&:focus,
+			&:hover {
+				color: var(--qode-main-color);
+			}
+		}
+	}
+}
+
+@mixin qodefTypographyLayout($important: null) {
+	font-family: inherit $important;
+	font-size: inherit $important;
+	font-weight: inherit $important;
+	font-style: inherit $important;
+	line-height: inherit $important;
+	letter-spacing: inherit $important;
+	text-transform: inherit $important;
+	color: inherit $important;
+}
+
+@mixin qodefIconType($icon: null, $font-size: null) {
+
+	@if ($font-size) {
+		font-size: $font-size;
+	}
+
+	@if ($icon == 'arrow-down') {
+		content: '\33';
+		font-family: 'ElegantIcons';
+
+	} @else if ($icon == 'arrow-down-fallback') {
+		content: '\25BE';
+		font-family: initial;
+		font-size: 16px;
+
+	} @else if ($icon == 'remove') {
+		font-family: 'ElegantIcons';
+		content: "\4d";
+
+		// fallback when core plugin is not activated
+		body:not([class*="artorias-core"]) & {
+			content: 'x';
+			font-family: initial;
+		}
+	}
+}
+
+@mixin qodefUnderline($height: 6px, $vertical-position: -3px) {
+	position: relative;
+	display: inline-flex;
+
+	&::after {
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: $height;
+		bottom: $vertical-position;
+		left: 0;
+		background-color: currentColor;
+		transform: scaleX(0);
+		transition: transform .5s $special-ease;
+		transform-origin: left;
+
+		$offset: 3px;
+	}
+}
+
+@mixin qodefUnderlineHover() {
+
+	&::after {
+		transform: scaleX(1);
+	}
+}
+
+@mixin qodefLineThrough($height: 1px, $vertical-position: 50%, $has-hover: true) {
+	position: relative;
+
+	&::after {
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: $height;
+		bottom: $vertical-position;
+		left: 0;
+		background-color: currentColor;
+	}
+
+	@if ($has-hover) {
+		&:hover {
+			&::after {
+				animation: qode-line-draw 1s cubic-bezier(0.16, 0.78, 0.11, 0.95);
+			}
+		}
+	}
+}
+
+/* ==========================================================================
+   Typography mixins - end
+   ========================================================================== */
+
+/* ==========================================================================
+   Menu mixins - begin
+   ========================================================================== */
+
+$menu-level-two-item-top-bottom-spacing: 6px;
+
+@mixin qodefMenuLevelOneInitialStyle($heading: null, $color: false, $fs-menu: false, $v-menu: false) {
+
+	@if ($heading == null) {
+
+		@if ($fs-menu) {
+			@include qodefAdditionalHeading($font-size: 55px, $line-height: 66px);
+		} @else if ($v-menu) {
+			@include qodefAdditionalHeading($font-size: 20px, $line-height: 32px);
+		} @else {
+			@include qodefAdditionalHeading();
+		}
+
+		@if ($color) {
+			color: $color;
+		}
+	}
+
+	@if ($heading == 'p') {
+		@include qodefParagraphStyle();
+	} @else if ($heading != null) {
+
+		@if ($color) {
+			@include qodefHeadingStyle($heading, false);
+			color: $color;
+		} @else {
+			@include qodefHeadingStyle($heading);
+		}
+	}
+
+	.qodef-menu-item-text {
+		@include qodefUnderline();
+	}
+}
+
+@mixin qodefMenuLevelOneHoverStyle() {
+	.qodef-menu-item-text {
+		@include qodefUnderlineHover();
+	}
+}
+
+@mixin qodefMenuLevelTwoInitialTypographyStyle($color: false, $fs-menu: false) {
+
+	@if ($fs-menu) {
+		@include qodefAdditionalText();
+	} @else {
+
+		@if ($color) {
+			@include qodefParagraphStyle($color);
+		} @else {
+			@include qodefParagraphStyle();
+		}
+	}
+}
+
+@mixin qodefMenuLevelTwoInitialStyle($position: 'left') {
+	position: relative;
+	display: flex;
+	white-space: normal; // This is set because of flex to wrap text
+	margin: $menu-level-two-item-top-bottom-spacing 0;
+	overflow: hidden;
+	transition: $color-transition;
+
+	@if ($position == 'right') {
+		justify-content: flex-end;
+	}
+
+	.qodef-menu-item-icon {
+		flex-shrink: 0;
+	}
+}
+
+@mixin qodefMenuLevelTwoHoverStyle($color: $gray) {
+	color: $color;
+}
+
+@mixin qodefMenuItemArrowStyle() {
+	position: absolute;
+	top: calc(50% - 12px);
+	right: 0;
+	width: 15px;
+	height: auto;
+}
+
+@mixin qodefMenuItemArrowInverseStyle() {
+	left: 0;
+	right: auto;
+	padding-bottom: 1px; // to move icon down because of rotation
+	transform: rotate(180deg);
+}
+
+@mixin qodefMobileMenuItemArrowStyle($color: currentColor) {
+	position: absolute;
+	top: 8px;
+	right: 0;
+	width: 15px;
+	height: auto;
+	color: $color;
+	z-index: 9;
+	cursor: pointer;
+	transition: $color-transition;
+}
+
+@mixin qodefMobileMenuItemArrowHoverStyle($color: var(--qode-main-color)) {
+	color: $color;
+}
+
+/* ==========================================================================
+   Menu mixins - end
+   ========================================================================== */
+
+/* ==========================================================================
+   Layout mixins - begin
+   ========================================================================== */
+
+@mixin qodefRelativeLayout($vertical-align: top) {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	vertical-align: $vertical-align;
+}
+
+@mixin qodefAbsoluteLayout() {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/* ==========================================================================
+   Layout mixins - end
+   ========================================================================== */
+
+/* ==========================================================================
+   Input fields mixins - begin
+   ========================================================================== */
+
+@mixin qodefPlaceholder() {
+	&::placeholder {
+		@content;
+
+		opacity: 1;
+	}
+}
+
+@mixin qodefRatingsColor() {
+	color: $white;
+}
+
+@mixin qodefRatingsStyle() {
+	@include qodefRelativeLayout();
+
+	line-height: 1;
+
+	.qodef-m-inner {
+		position: relative;
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	.qodef-m-star {
+		@include qodefRatingsColor();
+
+		svg {
+			display: inline-block;
+			margin-right: .1em;
+			width: 14px;
+			height: auto;
+
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+
+		&.qodef--active {
+			position: absolute;
+			top: 0;
+			left: 0;
+			overflow: hidden;
+			white-space: nowrap;
+
+			svg {
+				fill: currentColor;
+			}
+		}
+	}
+}
+
+/* ==========================================================================
+   Input fields mixins - end
+   ========================================================================== */
+
+/* ==========================================================================
+   Pagination mixins - begin
+   ========================================================================== */
+
+$pagination-class-map: (
+	wrapper: 'nav-links',
+	items: 'page-numbers',
+	prev: 'prev',
+	next: 'next',
+	current: 'current',
+);
+
+$pagination-typography-map: (
+	titleTag: null,
+	color: $silver,
+	activeColor: var(--qode-main-color),
+);
+
+@mixin qodefPaginationStyles($class-map: (), $typography-map: ()) {
+	$class-map-merged: map-merge($pagination-class-map, $class-map);
+	$typography-map-merged: map-merge($pagination-typography-map, $typography-map);
+
+	@if (map-get($class-map-merged, 'wrapper')) {
+		#{'.'}#{map-get($class-map-merged, 'wrapper')} {
+			position: relative;
+			display: flex;
+			align-items: center;
+		}
+	} @else {
+		position: relative;
+		display: flex;
+		align-items: center;
+	}
+
+	#{'.'}#{map-get($class-map-merged, 'items')} {
+		position: relative;
+		margin: 0 21px;
+		padding: 0 3px;
+		font-size: 17px;
+		letter-spacing: 0.08em;
+
+		@if (map-get($typography-map-merged, 'titleTag')) {
+			@include qodefHeadingStyle(map-get($typography-map-merged, 'titleTag'), false);
+		}
+
+		@if (map-get($typography-map-merged, 'color')) {
+			color: map-get($typography-map-merged, 'color');
+		}
+
+		* {
+			display: block;
+			line-height: inherit;
+		}
+
+		&:first-child {
+			margin-left: 0;
+		}
+
+		&:last-child {
+			margin-right: 0;
+		}
+
+		#{'&.'}#{map-get($class-map-merged, 'prev')},
+		#{'&.'}#{map-get($class-map-merged, 'next')} {
+			padding: 0;
+			display: flex;
+			column-gap: 13px;
+
+			.qodef-m-pagination-text {
+				letter-spacing: 0;
+			}
+
+			svg {
+				position: relative;
+				display: block;
+				width: 15px;
+				height: auto;
+				transition: transform .35s $special-ease-move, $color-transition;
+				transform: translateX(0px);
+			}
+		}
+
+		#{'&.'}#{map-get($class-map-merged, 'prev')} {
+			margin-right: 20px;
+
+			&:hover {
+				svg {
+					transform: translateX(-3px);
+				}
+			}
+		}
+
+		#{'&.'}#{map-get($class-map-merged, 'next')} {
+			margin-left: 20px;
+
+			&:hover {
+				svg {
+					transform: translateX(3px);
+				}
+			}
+		}
+
+		&:hover,
+		#{'&.'}#{map-get($class-map-merged, 'current')} {
+
+			@if (map-get($typography-map-merged, 'activeColor')) {
+				color: map-get($typography-map-merged, 'activeColor');
+			}
+		}
+	}
+}
+
+/* ==========================================================================
+   Pagination mixins - end
+   ========================================================================== */
+
+/* ==========================================================================
+   Grid size mixins - begin
+   ========================================================================== */
+
+@mixin qodefScreenSize1600 {
+	@media only screen and (max-width: $screen-size-1600) {
+		@content;
+	}
+}
+
+@mixin qodefScreenSize1440 {
+	@media only screen and (max-width: $screen-size-1440) {
+		@content;
+	}
+}
+
+@mixin qodefScreenSize1366 {
+	@media only screen and (max-width: $screen-size-1366) {
+		@content;
+	}
+}
+
+@mixin qodefScreenSize1280 {
+	@media only screen and (max-width: $screen-size-1280) {
+		@content;
+	}
+}
+
+@mixin qodefScreenSize1024 {
+	@media only screen and (max-width: $screen-size-1024) {
+		@content;
+	}
+}
+
+@mixin qodefScreenSize768 {
+	@media only screen and (max-width: $screen-size-768) {
+		@content;
+	}
+}
+
+@mixin qodefScreenSize680 {
+	@media only screen and (max-width: $screen-size-680) {
+		@content;
+	}
+}
+
+@mixin qodefScreenSize480 {
+	@media only screen and (max-width: $screen-size-480) {
+		@content;
+	}
+}
+
+/* ==========================================================================
+   Grid size mixins - end
+   ========================================================================== */
+
+/* ==========================================================================
+   Helper mixins - begin
+   ========================================================================== */
+
+@function map-deep-get($map, $keys...) {
+	@each $key in $keys {
+		$map: map-get($map, $key);
+	}
+
+	@return $map;
+}
+
+@function get-text-space() {
+	$value: ($text-line-height - $text-font-size) / 2 + 3; // 3 is temporary value, it's half size of widget title line height minus font size
+
+	@return $value;
+}
+
+@function non-destructive-map-merge($parent-map, $child-map) {
+	$result: $parent-map;
+
+	@each $key, $value in $child-map {
+		@if (not map-has-key($result, $key)) or (type-of(map-get($result, $key)) != type-of($value)) or (not (type-of(map-get($result, $key)) == map and type-of($value) == map)) {
+			$result: map-merge($result, ($key: $value));
+		} @else {
+			$result: map-merge($result, ($key: non-destructive-map-merge(map-get($result, $key), $value)));
+		}
+	}
+
+	@return $result;
+}
+
+/* ==========================================================================
+   Helper mixins - end
+   ========================================================================== */
+
+/* ==========================================================================
+   Common mixins - begin
+   ========================================================================== */
+
+@mixin qodefClearFix() {
+	&:before,
+	&:after {
+		content: '';
+		display: table;
+		table-layout: fixed;
+	}
+
+	&:after {
+		clear: both;
+	}
+}
+
+@function qodefSVG($icon) {
+	$base64: null;
+
+	@if ($icon == 'select-arrow-default') {
+		$base64: 'PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOSIgaGVpZ2h0PSIxNC44NzEiIHZpZXdCb3g9IjAgMCAxOSAxNC44NzEiPgogIDxwYXRoIGQ9Ik0xOSAwIDkuNDgxIDE0Ljg3MSAwIDBaTTkuNTE5IDkuMjEzbDMuOS02LjE1NUg1LjU4MWwzLjkzOCA2LjE1NVoiIGZpbGw9IiNmZmYiLz4KPC9zdmc+';
+	}
+
+	@if ($icon == 'select-arrow-light') {
+		$base64: 'PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHhtbG5zOnhsaW5rPSdodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rJyB4PScwcHgnIHk9JzBweCcgd2lkdGg9JzEwLjhweCcgaGVpZ2h0PSc2LjJweCcgdmlld0JveD0nMCAwIDEwLjggNi4yJyBzdHlsZT0nZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxMC44IDYuMjsnIHhtbDpzcGFjZT0ncHJlc2VydmUnPjxwYXRoIHN0eWxlPSdmaWxsOiAjZmZmJyBkPSdNMTAuNiwwLjNjMC4zLDAuMywwLjMsMC43LDAsMUw1LjksNS45QzUuOCw2LjEsNS42LDYuMiw1LjQsNi4yQzUuMiw2LjIsNSw2LjEsNC45LDUuOUwwLjIsMS4zIGMtMC4zLTAuMy0wLjMtMC43LDAtMWMwLjMtMC4zLDAuNy0wLjMsMSwwbDQuMiw0LjFsNC4yLTQuMUM5LjktMC4xLDEwLjItMC4xLDEwLjYsMC4zeicvPjwvc3ZnPg=='
+	}
+
+	@return $base64;
+}
+
+/* ==========================================================================
+   Common mixins - end
+   ========================================================================== */
+/* ==========================================================================
+   Animation mixins - begin
+   ========================================================================== */
+@mixin qodefImageZoom() {
+	//transform: scaleX(1);
+	transform: scale(1);
+	transition: transform .8s $special-ease-zoom;
+	transform-origin: 50% 100%
+}
+
+@mixin qodefImageZoomHover($zoom: 1.06) {
+	transform: scale($zoom);
+}
+
+@mixin qodefOverlay($gradient-color: rgba(0, 0, 0, .8)) {
+	content: '';
+	display: block;
+	@include qodefAbsoluteLayout();
+	background: linear-gradient(transparent, $gradient-color);
+	transform: translateY(100%);
+	pointer-events: none;
+	transition: transform .8s $special-ease-move;
+}
+
+@mixin qodefOverlayHover() {
+	transform: translateY(0%)
+}
+
+@mixin qodefDrawBorder($color: $white, $duration: .8s) {
+	background-repeat: no-repeat;
+
+	/* background-size values will repeat so we only need to declare them once */
+	background-size: calc(100% - 100%) 1px, /* top & bottom */
+	1px calc(100% - 100%); /* right & left */
+
+	background-position: 0px 0px, /* top */
+	100% 100%, /* right */
+	100% 100%, /* bottom */
+	0px 0%; /* left */
+
+	/* Since we're sizing and positioning with the above properties, we only need to set up a simple solid-color gradients for each side */
+	background-image: linear-gradient(0deg, $color, $color),
+	linear-gradient(0deg, $color, $color),
+	linear-gradient(0deg, $color, $color),
+	linear-gradient(0deg, $color, $color);
+
+	transition: background-size #{$duration} cubic-bezier(0.54, 0.07, 0.11, 0.95);
+	pointer-events: none;
+}
+
+@mixin qodefDrawBorderActive() {
+	background-size: calc(100% - 0%) 1px, /* top & bottom */
+	1px calc(100% - 0%); /* right & left */
+}
+
+/* ==========================================================================
+   Animation mixins - end
+   ========================================================================== */

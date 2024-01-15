@@ -1,0 +1,271 @@
+/* ==========================================================================
+   1.0 Reset default styles
+   ========================================================================== */
+$gutenbergimportant: null;
+
+@if variable-exists(gutenberg) {
+	$gutenbergimportant: !important;
+} @else {
+	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font,
+	ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+		vertical-align: baseline;
+		margin: 0;
+		padding: 0;
+		background: transparent;
+		border: 0;
+		outline: none;
+	}
+}
+
+* {
+	box-sizing: border-box;
+}
+
+article, aside, details, figcaption, figure, footer, header, nav, section, main {
+	display: block;
+}
+
+del {
+	text-decoration: line-through;
+}
+
+pre {
+	max-width: 100%;
+	margin: 15px 0;
+	padding: 15px;
+	background-color: $background-color;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	font-family: monospace $gutenbergimportant;
+	font-size: 1em $gutenbergimportant;
+	color: $white $gutenbergimportant;
+}
+
+code {
+	background-color: $background-color $gutenbergimportant;
+	padding: 0 $gutenbergimportant;
+	font-family: monospace, monospace $gutenbergimportant;
+	font-size: 1em $gutenbergimportant;
+	color: $white $gutenbergimportant;
+}
+
+sub,
+sup {
+	position: relative;
+	vertical-align: baseline;
+	font-size: 75%;
+	line-height: 0;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+sup {
+	top: -0.5em;
+}
+
+table {
+	width: 100%;
+	vertical-align: middle;
+	border: medium none;
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-size: inherit;
+	color: inherit;
+	line-height: inherit;
+
+	tr {
+		border: 1px solid $border-color $gutenbergimportant;
+	}
+
+	th {
+		padding: 5px 7px $gutenbergimportant;
+		text-align: left;
+		border-right: 1px solid $border-color;
+	}
+
+	td {
+		padding: 5px 10px $gutenbergimportant;
+		text-align: left;
+		border: 0 $gutenbergimportant;
+		border-right: 1px solid $border-color $gutenbergimportant;
+
+		br {
+			display: none;
+		}
+	}
+}
+
+hr {
+	background-color: #bbb;
+	border: 0 $gutenbergimportant;
+	height: 1px;
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+
+	&:not(.is-style-wide):not(.is-style-dots) {
+		max-width: 100px
+	}
+
+	body:not([class*="artorias-core"]) & {
+		clear: both;
+	}
+}
+
+ul, ol {
+	list-style-position: inside;
+	margin-bottom: 1.5em $gutenbergimportant;
+	padding: 0 $gutenbergimportant;
+
+	&.wp-block {
+		margin-bottom: 1.5em $gutenbergimportant;
+	}
+
+	&:not(.wp-block) {
+		margin: 0 0 1.5em $gutenbergimportant;
+	}
+}
+
+li > ul,
+li > ol {
+
+	&:not(.wp-block) {
+		margin-bottom: 0 $gutenbergimportant;
+		margin-left: 1.5em $gutenbergimportant;
+	}
+}
+
+dt {
+	font-weight: 700;
+}
+
+dd {
+	margin: 0 1.5em 1.5em;
+}
+
+a img {
+	border: none;
+}
+
+img, .wp-caption {
+	height: auto;
+	max-width: 100%;
+}
+
+img {
+	vertical-align: middle;
+	border-style: none;
+}
+
+figure {
+	margin: 0;
+}
+
+embed,
+iframe,
+object {
+	display: block;
+	max-width: 100%;
+}
+
+video {
+	display: block;
+}
+
+embed,
+object {
+	height: auto;
+}
+
+label {
+	display: block;
+	margin-bottom: 0.5em;
+}
+
+fieldset {
+	margin-bottom: 1em;
+	padding: 0.35em 0.75em 0.625em;
+}
+
+input[type='submit'] {
+	-webkit-appearance: none;
+}
+
+abbr[title] {
+	border-bottom: none; /* 1 */
+	text-decoration: underline; /* 2 */
+	text-decoration: underline dotted; /* 2 */
+}
+
+b,
+strong {
+	font-weight: bolder;
+}
+
+kbd,
+samp {
+	font-family: monospace, monospace; /* 1 */
+	font-size: 1em; /* 2 */
+	background-color: $background-color;
+}
+
+small {
+	font-size: 80%;
+}
+
+progress {
+	vertical-align: baseline;
+}
+
+summary {
+	display: list-item;
+}
+
+template {
+	display: none;
+}
+
+figcaption,
+.wp-caption,
+.gallery-caption {
+	display: block;
+	max-width: 100%;
+	font-size: 13px !important;
+	line-height: 1em !important;
+	color: $white;
+	text-align: center;
+	opacity: 1;
+	margin: .5em auto 1em; // gutenberg
+
+	a {
+		color: inherit;
+	}
+}
+
+.wp-caption {
+
+	.wp-caption-text {
+		opacity: 1;
+	}
+}
+
+blockquote.instagram-media,
+iframe.instagram-media {
+	margin: auto !important;
+}
+
+.sticky,
+.bypostauthor {
+	opacity: 1;
+}
+
+::selection {
+	color: $black;
+	background: var(--qode-main-color);
+}
+
+::-moz-selection {
+	color: $black;
+	background: var(--qode-main-color);
+}

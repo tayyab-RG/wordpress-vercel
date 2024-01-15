@@ -1,0 +1,58 @@
+/* ==========================================================================
+   Footer styles
+   ========================================================================== */
+
+#qodef-page-footer {
+	@include qodefRelativeLayout();
+
+	> * {
+		@include qodefRelativeLayout();
+	}
+
+	.widget a.qodef--change-color {
+		color: inherit;
+	}
+}
+
+#qodef-page-footer-top-area {
+	background-color: $background-color;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	.qodef-content-full-width {
+		padding-left: $side-padding;
+		padding-right: $side-padding;
+	}
+
+	.qodef--boxed & {
+		padding-left: $boxed-grid-padding-size;
+		padding-right: $boxed-grid-padding-size;
+	}
+}
+
+#qodef-page-footer-top-area-inner {
+	border: 0 solid $border-color;
+	padding-bottom: 28px;
+	padding-top: 122px;
+}
+
+#qodef-page-footer-bottom-area {
+	background-color: $background-color;
+
+	.qodef-content-full-width {
+		padding-left: $side-padding;
+		padding-right: $side-padding;
+	}
+
+	.qodef--boxed & {
+		padding-left: $boxed-grid-padding-size;
+		padding-right: $boxed-grid-padding-size;
+	}
+}
+
+#qodef-page-footer-bottom-area-inner {
+	border: 0 solid $border-color;
+	padding-bottom: 62px;
+	padding-top: 62px;
+}

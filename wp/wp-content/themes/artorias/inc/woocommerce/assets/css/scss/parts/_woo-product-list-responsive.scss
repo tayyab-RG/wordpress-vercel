@@ -1,0 +1,45 @@
+/* ==========================================================================
+   WooCommerce global responsive styles
+   ========================================================================== */
+
+.qodef-woo-product-list {
+
+	ul.products {
+		
+		@each $key, $values in $grid-columns-layout-responsive-map {
+			
+			@media only screen and (max-width: map-deep-get($grid-columns-layout-responsive-map, $key, 'responsive-stage')) {
+				
+				@each $column in map-deep-get($grid-columns-layout-responsive-map, $key, 'columns-label') {
+					
+					&.columns-#{$column} {
+						$column-size: map-deep-get($grid-columns-layout-responsive-map, $key, 'columns-size');
+						$column-width: 100% / $column-size;
+						
+						> .product {
+							width: $column-width;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	@include qodefScreenSize1440 {
+		
+		@for $i from 0 to length($grid-columns-gutter-responsive-label) {
+			&.qodef-gutter--#{nth($grid-columns-gutter-responsive-label,$i+1)} {
+				$gutter-size: nth($grid-columns-gutter-responsive-size, $i+1);
+				
+				ul.products {
+					margin: 0 -#{$gutter-size}px;
+					
+					> .product {
+						padding: 0 #{$gutter-size}px;
+						margin: 0 0 #{2 * $gutter-size}px;
+					}
+				}
+			}
+		}
+	}
+}

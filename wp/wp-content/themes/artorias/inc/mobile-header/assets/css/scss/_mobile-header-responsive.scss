@@ -1,0 +1,10 @@
+/* ==========================================================================
+   Mobile Header responsive styles
+   ========================================================================== */
+
+@include qodefScreenSize1024 {
+	
+	#qodef-page-mobile-header {
+		display: block;
+	}
+}

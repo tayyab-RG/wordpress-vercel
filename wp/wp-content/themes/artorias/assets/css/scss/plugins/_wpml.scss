@@ -1,0 +1,268 @@
+/* ==========================================================================
+   WPML style start
+   ========================================================================== */
+
+.widget_icl_lang_sel_widget {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+
+    .wpml-ls-legacy-dropdown,
+    .wpml-ls-legacy-dropdown-click {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        text-align: left;
+
+        &:hover {
+
+            .wpml-ls-sub-menu {
+                opacity: 1;
+                visibility: visible;
+                -webkit-transition-delay: 0s;
+                -moz-transition-delay: 0s;
+                transition-delay: 0s;
+            }
+        }
+
+        .wpml-ls-flag {
+            position: relative;
+            top: -1px;
+        }
+
+        .wpml-ls-item-legacy-dropdown {
+            padding: 0;
+            margin: 0;
+        }
+
+        .wpml-ls-item-toggle {
+            position: relative;
+            display: flex;
+            align-items: center;
+
+            &:after {
+                @include qodefIconType('arrow-down');
+                line-height: 1;
+                border: 0;
+                position: initial;
+                margin-left: auto;
+
+                body:not([class*="artorias-core"]) & {
+                    @include qodefIconType('arrow-down-fallback');
+                }
+            }
+        }
+
+        .wpml-ls-sub-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            list-style: none;
+            margin: 0;
+            border-top: 0;
+            z-index: 10;
+            opacity: 0;
+            visibility: hidden;
+            transition: visibility 0s linear 0.25s, opacity 0.25s ease-in-out;
+
+            .wpml-ls-item {
+                display: block;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    border: 0;
+                    background-color: transparent;
+                    padding: 7px 0;
+                }
+            }
+        }
+    }
+
+    .wpml-ls-legacy-list-horizontal {
+        padding: 0;
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                display: inline-block;
+                vertical-align: middle;
+                margin-bottom: 0 !important; /* Important is because of widget default css */
+
+                a {
+                    padding: 0;
+                    display: block;
+                }
+            }
+        }
+    }
+
+    .wpml-ls-legacy-list-vertical {
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                display: block;
+                margin: 0;
+
+                a {
+                    padding: 0;
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+$wp-widgets-map: (
+    legacy-dropdown-width: 200px,
+    input-fields-height: 46,
+    input-fields-text-line-height: 24,
+    input-fields-side-padding: 20,
+    input-fields-text-color: $white,
+    input-fields-background-color: $background-color,
+    input-fields-border-color: transparent,
+    list-item-bottom-margin: 10px,
+    link-color: $white,
+    link-hover-color: var(--qode-main-color),
+    input-fields-text-size: 14,
+    link-color-list: $white,
+    link-hover-color-list: var(--qode-main-color),
+);
+
+$wp-widgets-area-map: (
+        '#qodef-page-header': (
+            legacy-dropdown-width: 200px,
+            input-fields-background-color: #fff,
+        ),
+        '#qodef-page-mobile-header': (
+            legacy-dropdown-width: 175px,
+            input-fields-background-color: transparent,
+        ),
+        '#qodef-top-area' : (
+            legacy-dropdown-width: 175px,
+            input-fields-height: 40,
+            input-fields-text-color: #fff,
+            link-color: #fff,
+            link-hover-color: #fff,
+            input-fields-border-color: transparent,
+            input-fields-background-color: #000,
+            link-color-list: #fff,
+            link-hover-color-list: #fff,
+        ),
+        '#qodef-page-sidebar': (
+            legacy-dropdown-width: 100%,
+            input-fields-background-color: $background-color,
+        ),
+        '#qodef-page-footer': (
+            legacy-dropdown-width: 100%,
+            input-fields-text-color: $white,
+            link-color: $white,
+            link-hover-color: var(--qode-main-color),
+            input-fields-border-color: transparent,
+            link-color-list: #fff,
+            link-hover-color-list: #fff,
+        ),
+        '#qodef-side-area': (
+            legacy-dropdown-width: 100%,
+            input-fields-text-color: $white,
+            link-color: $white,
+            link-hover-color: var(--qode-main-color),
+            input-fields-border-color: transparent,
+            link-color-list: #fff,
+            link-hover-color-list: #fff,
+        )
+);
+
+@each $key, $values in $wp-widgets-area-map {
+    $wp-widgets-map-merged: map-merge($wp-widgets-map, $values);
+
+    #{$key} .widget_icl_lang_sel_widget {
+        .wpml-ls-legacy-dropdown,
+        .wpml-ls-legacy-dropdown-click {
+            width: map-get($wp-widgets-map-merged, 'legacy-dropdown-width');
+            .wpml-ls-item-toggle {
+                padding: #{(map-get($wp-widgets-map-merged, 'input-fields-height') - map-get($wp-widgets-map-merged, 'input-fields-text-line-height')) / 2}px #{map-get($wp-widgets-map-merged, 'input-fields-side-padding')}px;
+                height: #{map-get($wp-widgets-map-merged, 'input-fields-height')}px;
+                line-height: #{map-get($wp-widgets-map-merged, 'input-fields-text-line-height')}px;
+                color: map-get($wp-widgets-map-merged, 'link-color');
+                background-color: map-get($wp-widgets-map-merged, 'input-fields-background-color');
+                border: 1px solid #{map-get($wp-widgets-map-merged, 'input-fields-border-color')};
+                font-size: #{map-get($wp-widgets-map-merged, 'input-fields-text-size')}px;
+
+                &:hover {
+                    color: map-get($wp-widgets-map-merged, 'link-hover-color');
+                }
+            }
+
+            .wpml-ls-sub-menu {
+                margin: 0;
+                padding: 0 #{map-get($wp-widgets-map-merged, 'input-fields-side-padding')}px;
+                background-color: map-get($wp-widgets-map-merged, 'input-fields-background-color');
+
+                .wpml-ls-item {
+
+                    a {
+                        color: map-get($wp-widgets-map-merged, 'link-color');
+                        font-size: #{map-get($wp-widgets-map-merged, 'input-fields-text-size')}px;
+
+                        &:hover {
+                            color: map-get($wp-widgets-map-merged, 'link-hover-color');
+                        }
+                    }
+                }
+            }
+        }
+
+        .wpml-ls-legacy-list-horizontal {
+            ul {
+                li {
+                    margin-right: map-get($wp-widgets-map-merged, 'list-item-bottom-margin') !important; /* Important is because of widget default css */
+
+                    a {
+                        color: map-get($wp-widgets-map-merged, 'link-color-list');
+
+                        &:hover {
+                            color: map-get($wp-widgets-map-merged, 'link-hover-color-list');
+                        }
+                    }
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+
+        .wpml-ls-legacy-list-vertical {
+
+            ul {
+
+                li {
+                    margin-bottom: map-get($wp-widgets-map-merged, 'list-item-bottom-margin');
+
+                    a {
+                        color: map-get($wp-widgets-map-merged, 'link-color-list');
+
+                        &:hover {
+                            color: map-get($wp-widgets-map-merged, 'link-hover-color-list');
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+/* ==========================================================================
+   WPML style start
+   ========================================================================== */

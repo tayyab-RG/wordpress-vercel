@@ -1,0 +1,41 @@
+/* ==========================================================================
+   Blog Single styles
+   ========================================================================== */
+
+.qodef-blog {
+
+	&.qodef--single {
+
+		.qodef-blog-item {
+			--qodef-media-margin-bottom: 35px;
+			--qodef-bottom-holder-margin-top: 32px;
+			margin: 0 0 40px;
+
+			.qodef-e-title {
+				margin: 0px 0px 19px 0px;
+			}
+
+			&.format-link {
+
+				.qodef-e-link {
+					margin-bottom: var(--qodef-media-margin-bottom, 35px);
+				}
+
+				.qodef-e-top-holder {
+					margin-bottom: 21px;
+				}
+			}
+
+			&.format-quote {
+
+				.qodef-e-quote {
+					margin-bottom: var(--qodef-media-margin-bottom, 35px);
+				}
+
+				.qodef-e-top-holder {
+					margin-bottom: 21px;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,135 @@
+/* ==========================================================================
+   5.0 Typography styles
+   ========================================================================== */
+
+body {
+	@include qodefParagraphStyle();
+
+	background-color: $background-color;
+	-webkit-font-smoothing: antialiased;
+	overflow-x: hidden;
+}
+
+@for $i from 1 to 7 {
+
+	h#{$i},
+	.qodef-h#{$i} {
+		@include qodefHeadingStyle(#{h#{$i}}, true, true);
+
+		margin: 25px 0;
+		-ms-word-wrap: break-word;
+		word-wrap: break-word;
+	}
+}
+
+a,
+p a {
+	@include qodefLinkStyle();
+}
+
+p {
+	margin: 10px 0;
+
+	&.has-large-font-size {
+		font-size: 36px;
+		line-height: $text-line-height-em;
+
+		+ p {
+			line-height: $text-line-height-em;
+		}
+	}
+
+	&.has-background {
+		padding: 20px 30px;
+	}
+}
+
+blockquote,
+.wp-block-quote {
+	@include qodefRelativeLayout();
+	@include qodefBlockquoteStyle();
+
+	margin: 0;
+	quotes: none;
+	z-index: 1;
+
+	> * {
+		@include qodefTypographyLayout();
+
+		margin: 0;
+	}
+
+	p {
+		margin: 0 !important; // gutenberg
+	}
+
+	&:after {
+		content: '';
+	}
+
+	cite,
+	.wp-block-quote__citation,
+	.wp-block-pullquote__citation {
+		display: block;
+		font-style: normal;
+		font-weight: 400 !important;
+		margin: 10px 0 0;
+		text-align: inherit !important;
+		text-transform: uppercase !important;
+	}
+}
+
+.qodef-e-info {
+	display: flex;
+	flex-wrap: wrap;
+
+	> * {
+		@include qodefInfoStyle($heading: false);
+
+		text-transform: uppercase;
+
+		&.qodef-e-info-tag {
+			@include qodefLineThrough();
+
+			color: $gray;
+			text-transform: lowercase;
+
+			a {
+				color: inherit;
+			}
+		}
+
+		&.entry-date {
+			text-transform: initial;
+		}
+	}
+
+	a {
+		color: inherit;
+
+		&:hover {
+			color: $gray;
+		}
+	}
+}
+
+.qodef-info-separator-single {
+	color: initial;
+
+	&:after {
+		content: '';
+		margin-right: 12px;
+	}
+}
+
+.qodef-info-separator-end {
+
+	&:after {
+		content: '/';
+		margin: 0px 12px 0px 12px;
+	}
+
+	&:last-of-type {
+		display: none;
+	}
+}

@@ -1,0 +1,78 @@
+/* ==========================================================================
+   Filter styles
+   ========================================================================== */
+
+.qodef-filter--on {
+
+	.qodef-grid-inner {
+		opacity: 1;
+		transition: opacity .5s ease;
+	}
+
+	&.qodef--filter-loading {
+
+		.qodef-grid-inner {
+			opacity: 0;
+			transition: opacity .2s ease;
+		}
+
+		.qodef-m-pagination-spinner {
+			bottom: calc(50% - 16px) !important; // important is set to prevent larger selectors
+		}
+	}
+}
+
+.qodef-m-filter {
+	$letter-spacing: 0.02em;
+
+	@include qodefRelativeLayout();
+
+	margin: 0 0 45px 0;
+
+	.qodef-m-filter-items {
+		align-items: center;
+		display: flex;
+		position: relative;
+	}
+
+	.qodef-m-filter-item {
+		@include qodefHeadingStyle($heading: h6);
+		@include qodefButtonSize($size: large);
+
+		border-bottom: 1px solid $border-color;
+		border-left: 1px solid $border-color;
+		border-top: 1px solid $border-color;
+		display: block;
+		letter-spacing: $letter-spacing;
+		position: relative;
+		top: 1px;
+		transition: $color-transition, $background-color-transition;
+
+		&:after {
+			$offset: 3px;
+
+			background-color: currentColor;
+			bottom: $offset;
+			content: '';
+			display: block;
+			height: 5px;
+			left: $offset;
+			opacity: 0;
+			position: absolute;
+			transition: $opacity-transition;
+			width: calc(100% - #{$offset * 2});
+		}
+
+		&:last-child {
+			border-right: 1px solid $border-color;
+		}
+
+		&:hover,
+		&.qodef--active {
+
+			&:after {
+				opacity: 1;
+			}
+		}
+	}
+}

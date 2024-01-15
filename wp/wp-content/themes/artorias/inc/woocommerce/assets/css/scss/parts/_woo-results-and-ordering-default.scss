@@ -1,0 +1,64 @@
+/* ==========================================================================
+   WooCommerce results and ordering styles
+   ========================================================================== */
+
+.qodef-woo-results {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 24px;
+	position: relative;
+
+	.woocommerce-ordering {
+		margin-left: auto;
+
+		select {
+			@include qodefWooSelect2Style();
+		}
+
+		.select2 {
+
+			&-container {
+
+				&--default {
+					margin: 0;
+					width: 305px !important;
+				}
+
+				&--open {
+
+					&.select2-container {
+
+						&--below {
+
+							.select2-selection {
+								border-bottom-color: $white !important;
+							}
+						}
+
+						&--above {
+
+							.select2-selection {
+								border-top-color: $white !important;
+							}
+						}
+					}
+				}
+			}
+
+			&-selection {
+				border-bottom-color: transparent !important;
+				border-left: none;
+				border-right: none;
+				border-top-color: transparent !important;
+			}
+		}
+	}
+}
+
+.select2-dropdown {
+
+	&.qodef--ordering {
+		border-color: transparent !important;
+	}
+}

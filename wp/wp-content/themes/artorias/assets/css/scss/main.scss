@@ -1,0 +1,36 @@
+/* ==========================================================================
+   Include variables and mixins
+   ========================================================================== */
+@import 'variables-css';
+@import 'variables';
+@import 'grid-variables';
+@import 'mixins';
+@import 'shortcodes-mixins';
+@import 'keyframes';
+
+/* ==========================================================================
+   Theme - Table of contents
+   
+ * 1.0 Reset styles
+ * 2.0 Accessibility styles
+ * 3.0 Alignments styles
+ * 4.0 Clearings styles
+ * 5.0 Typography styles
+ * 6.0 Input Fields styles
+ * 7.0 Content styles
+ * 8.0 Plugins styles
+ * 9.0 Modules styles (Header, Footer, Title etc.)
+ * 10.0 Responsive styles
+   ========================================================================== */
+@import 'parts/reset';
+@import 'parts/accessibility';
+@import 'parts/alignments';
+@import 'parts/clearings';
+@import 'parts/typography';
+@import 'parts/input-fields';
+@import 'parts/content';
+@import 'plugins/*.scss';
+@import '../../../inc/**/assets/css/scss/**/*-default.scss';
+
+// Responsive module parts
+@import '../../../inc/**/assets/css/scss/**/*-responsive.scss';

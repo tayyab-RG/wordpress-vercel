@@ -1,0 +1,17 @@
+/* ==========================================================================
+   Navigation Menu styles
+   ========================================================================== */
+
+@include qodefScreenSize1440 {
+	$menu-item-side-spacing-responsive: 20px;
+
+	.qodef-header-navigation {
+
+		> ul {
+
+			> li {
+				margin: 0 $menu-item-side-spacing-responsive;
+			}
+		}
+	}
+}

@@ -1,0 +1,13 @@
+/* ==========================================================================
+   Sidebar styles
+   ========================================================================== */
+
+.qodef-page-sidebar-section {
+	margin-bottom: 0 !important;
+}
+
+#qodef-page-sidebar {
+	@include qodefRelativeLayout();
+
+	margin-bottom: 60px;
+}

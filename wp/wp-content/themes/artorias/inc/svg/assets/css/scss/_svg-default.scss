@@ -1,0 +1,87 @@
+/* ==========================================================================
+   SVG styles
+   ========================================================================== */
+
+.qodef-svg--menu {
+	fill: currentColor;
+	stroke: none;
+}
+
+.qodef-svg--search {
+	fill: none;
+	stroke: currentColor;
+}
+
+.qodef-svg--star {
+	fill: none;
+	stroke: currentColor;
+}
+
+.qodef-svg--menu-arrow {
+	fill: currentColor;
+	stroke: none;
+}
+
+.qodef-svg--accordion-arrow {
+	fill: currentColor;
+	stroke: none;
+}
+
+.qodef-svg--slider-arrow-left,
+.qodef-svg--slider-arrow-right {
+	fill: currentColor;
+	stroke: none;
+}
+
+.qodef-svg--pagination-arrow-left,
+.qodef-svg--pagination-arrow-right {
+	fill: currentColor;
+	stroke: none;
+}
+
+.qodef-svg--close {
+	fill: currentColor;
+	stroke: none;
+}
+
+.qodef-svg--spinner {
+	fill: var(--qode-main-color);
+	stroke: none;
+}
+
+.qodef-svg--link {
+	fill: currentColor;
+	stroke: none;
+}
+
+.qodef-svg--drag-cursor {
+
+	circle {
+		fill: $white;
+	}
+
+	text {
+		@include qodefParagraphStyle();
+
+		fill: $background-color;
+	}
+
+	path {
+		fill: $background-color;
+	}
+}
+
+.qodef-svg--quote {
+	fill: currentColor;
+	stroke: none;
+}
+
+.qodef-svg--back-to-top {
+	fill: currentColor;
+	stroke: none;
+}
+
+.qodef-svg--play {
+	fill: currentColor;
+	stroke: none;
+}

@@ -1,0 +1,695 @@
+/* ==========================================================================
+   6.0 Input Fields styles
+   ========================================================================== */
+
+$input-fields-map: (
+	input-fields-height: 44,
+	input-fields-side-padding: 14,
+	input-fields-margin-bottom: 21,
+	input-fields-text-size: 16,
+	input-fields-text-line-height: 24,
+	input-fields-text-color: $white,
+	input-fields-focus-text-color: $white,
+	input-fields-background-color: $background-color,
+	input-fields-focus-background-color: $background-color,
+	input-fields-border-color: $border-color,
+	input-fields-focus-border-color: $border-color,
+);
+
+$input-fields-area-map: (
+	'': (),
+);
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+input[type="search"],
+input[type="date"],
+textarea,
+select {
+	@include qodefRelativeLayout();
+
+	border-radius: 0;
+	border-style: solid;
+	border-width: 1px;
+	box-sizing: border-box;
+	cursor: pointer;
+	font-family: inherit;
+	font-size: #{map-get($input-fields-map, 'input-fields-text-size')}px;
+	font-weight: inherit;
+	line-height: #{map-get($input-fields-map, 'input-fields-text-line-height')}px;
+	margin: 0 0 #{map-get($input-fields-map, 'input-fields-margin-bottom')}px;
+	outline: 0;
+	padding: #{(map-get($input-fields-map, 'input-fields-height') - map-get($input-fields-map, 'input-fields-text-line-height')) / 2}px #{map-get($input-fields-map, 'input-fields-side-padding')}px;
+	transition: $color-transition, $background-color-transition, $border-color-transition;
+
+	@at-root .qodef-contact-form-7 & {
+		margin: 0;
+	}
+
+	@include qodefPlaceholder() {
+		color: inherit;
+	}
+
+	@each $key, $values in $input-fields-area-map {
+		$input-fields-area-map-merged: map-merge($input-fields-map, $values);
+
+		#{$key} & {
+			background-color: map-get($input-fields-area-map-merged, 'input-fields-background-color');
+			border-color: map-get($input-fields-area-map-merged, 'input-fields-border-color');
+			color: map-get($input-fields-area-map-merged, 'input-fields-text-color');
+
+			&:focus {
+				background-color: map-get($input-fields-area-map-merged, 'input-fields-focus-background-color');
+				border-color: map-get($input-fields-area-map-merged, 'input-fields-focus-border-color');
+				color: map-get($input-fields-area-map-merged, 'input-fields-focus-text-color');
+			}
+		}
+	}
+}
+
+.qodef-contact-form-7 {
+
+	.wpcf7-form-control-wrap {
+		margin: 0 0 #{map-get($input-fields-map, 'input-fields-margin-bottom')}px;
+	}
+
+	label {
+		margin: 0 0 #{map-get($input-fields-map, 'input-fields-margin-bottom')}px;
+
+		.wpcf7-form-control-wrap {
+			margin: 0;
+		}
+	}
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+	-webkit-appearance: none;
+	border: 1px solid $border-color;
+	display: inline-block;
+	height: 18px;
+	margin: -0 18px 0 0;
+	width: 18px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+input[type="search"],
+textarea,
+select {
+	-webkit-appearance: none;
+}
+
+select {
+	background-image: url('data:image/svg+xml;base64,#{qodefSVG('select-arrow-default')}');
+	background-position: calc(100% - 20px) center;
+	background-repeat: no-repeat;
+	display: inline-block;
+	height: auto;
+	margin: 0;
+	user-select: none;
+
+	&:disabled {
+		background-color: $background-color;
+		border-color: inherit;
+		box-shadow: none;
+		color: inherit;
+		text-shadow: none;
+	}
+
+	option {
+		color: map-get($input-fields-map, 'input-fields-text-color');
+	}
+
+	&.qodef-arrow--light {
+		background-image: url('data:image/svg+xml;base64,#{qodefSVG('select-arrow-light')}');
+	}
+}
+
+.post-password-form {
+
+	input[type="password"] {
+		margin-top: 0.5em; // same value as label bottom margin
+
+		@media only screen and (min-width: $screen-size-769) {
+			display: block;
+			max-width: 50%;
+		}
+	}
+}
+
+input[type="submit"],
+button[type="submit"],
+.qodef-theme-button {
+	@include qodefButtonDefaultStyle();
+	@include qodefButtonSize();
+	@include qodefButtonFilledColor();
+
+	cursor: pointer;
+
+	&:hover {
+		@include qodefButtonFilledHoverColor();
+	}
+}
+
+button[type="submit"],
+.qodef-theme-button {
+
+	span {
+		display: block;
+		line-height: inherit;
+
+		&:before {
+			display: block;
+			line-height: inherit;
+		}
+	}
+}
+
+// this map override existing keys and add specific keys only for select and select2
+$select2-input-fields-map: (
+	dropdown-background-color: $background-color,
+	dropdown-border-color: $border-color,
+	search-field-text-color: $white,
+	search-field-focus-text-color: $white,
+	search-field-background-color: transparent,
+	search-field-focus-background-color: transparent,
+	search-field-border-color: $border-color,
+	search-field-focus-border-color: $border-color,
+	dropdown-item-hover-color: $white,
+);
+
+$select2-input-fields-map-merged: map-merge($input-fields-map, $select2-input-fields-map);
+
+/* ==========================================================================
+   Select 2 Script styles (Version: 4.0.6 ) - begin
+   ========================================================================== */
+
+.select2-container--default { // just to make sure that this code override styles from others plugin
+
+	@at-root [class*="artorias"] & {
+		display: inline-block;
+		margin: 0 0 #{map-get($select2-input-fields-map-merged, 'input-fields-margin-bottom')}px;
+		position: relative;
+		vertical-align: middle;
+		width: auto;
+
+		.select2-selection--single {
+			border-radius: 0;
+			border-style: solid;
+			border-width: 1px;
+			cursor: pointer;
+			display: block;
+			font-family: inherit;
+			font-size: #{map-get($select2-input-fields-map-merged, 'input-fields-text-size')}px;
+			font-weight: normal;
+			height: auto;
+			line-height: #{map-get($select2-input-fields-map-merged, 'input-fields-text-line-height')}px;
+			margin: 0;
+			outline: none;
+			padding: #{(map-get($select2-input-fields-map-merged, 'input-fields-height') - map-get($select2-input-fields-map-merged, 'input-fields-text-line-height')) / 2}px #{map-get($select2-input-fields-map-merged, 'input-fields-side-padding')}px;
+			user-select: none;
+
+			.select2-selection__rendered {
+				color: inherit;
+				display: block;
+				line-height: inherit;
+				overflow: hidden;
+				padding: 0;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+
+			.select2-selection__clear {
+				cursor: pointer;
+				float: right;
+				font-weight: inherit;
+				margin: 0;
+				position: relative;
+			}
+
+			.select2-selection__placeholder {
+				color: inherit;
+			}
+
+			.select2-selection__arrow {
+				align-items: center;
+				color: inherit;
+				display: flex;
+				font-size: 16px;
+				height: 100%;
+				justify-content: center;
+				position: absolute;
+				right: 0;
+				top: 0;
+				width: 50px;
+
+				b {
+					display: none;
+				}
+
+				&:before {
+					mask-image: url('data:image/svg+xml;base64,#{qodefSVG('select-arrow-default')}');
+					display: block;
+					content: '';
+					width: 19px;
+					height: 15px;
+					background-color: currentColor;
+				}
+			}
+		}
+
+		.select2-selection--multiple {
+			border-radius: 0;
+			border-style: solid;
+			border-width: 1px;
+			cursor: pointer;
+			display: block;
+			font-family: inherit;
+			font-size: #{map-get($select2-input-fields-map-merged, 'input-fields-text-size')}px;
+			font-weight: normal;
+			height: auto;
+			line-height: #{map-get($select2-input-fields-map-merged, 'input-fields-text-line-height')}px;
+			margin: 0;
+			outline: none;
+			padding: #{(map-get($select2-input-fields-map-merged, 'input-fields-height') - map-get($select2-input-fields-map-merged, 'input-fields-text-line-height')) / 2}px #{map-get($select2-input-fields-map-merged, 'input-fields-side-padding')}px;
+			user-select: none;
+
+			.select2-selection__rendered {
+				color: inherit;
+				display: block;
+				line-height: inherit;
+				list-style: none;
+				overflow: hidden;
+				padding: 0;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+
+				li {
+					margin: 0;
+					padding: 0;
+				}
+
+				.select2-selection__placeholder {
+					color: inherit;
+					float: left;
+					margin: 0;
+				}
+
+				.select2-selection__clear {
+					cursor: pointer;
+					float: right;
+					font-weight: inherit;
+					margin: 0;
+					position: relative;
+				}
+
+				.select2-selection__choice {
+					background-color: $black;
+					border: 1px solid $white;
+					border-radius: 0;
+					color: $white;
+					cursor: default;
+					float: left;
+					margin: 1px 1px 1px 0;
+					padding: 0 7px;
+					font-size: 14px;
+					text-transform: uppercase;
+					line-height: 20px;
+				}
+
+				.select2-selection__choice__remove {
+					color: inherit;
+					cursor: pointer;
+					display: inline-block;
+					font-weight: inherit;
+					margin: 0 7px 0 0;
+					transition: $opacity-transition;
+
+					&:hover {
+						color: inherit;
+						opacity: 0.8;
+					}
+				}
+			}
+		}
+
+		.select2-search--inline {
+			float: left;
+
+			.select2-search__field {
+				-webkit-appearance: none;
+				border: none !important;
+				color: inherit;
+				font-family: inherit;
+				font-size: inherit;
+				font-weight: inherit;
+				margin: 0 !important;
+				outline: none;
+				padding: 0 !important;
+				width: 100%;
+
+				&:focus {
+					border-color: $white;
+				}
+
+				&::-webkit-search-cancel-button {
+					-webkit-appearance: none;
+				}
+			}
+		}
+
+		.select2-dropdown {
+			background-color: map-get($select2-input-fields-map-merged, 'dropdown-background-color');
+			border: 1px solid map-get($select2-input-fields-map-merged, 'dropdown-border-color');
+			border-radius: 0;
+			display: block;
+			left: -100000px;
+			position: absolute;
+			top: 0;
+			width: 100%;
+			z-index: 99999;
+
+			//@at-root .admin-bar#{&} {
+			//	top: 32px;
+			//
+			//	@media only screen and (max-width: 782px) {
+			//		top: 46px;
+			//	}
+			//}
+		}
+
+		.select2-search--dropdown {
+			display: block;
+			padding: 14px 15px 2px;
+
+			&.select2-search--hide {
+				display: none;
+			}
+
+			.select2-search__field {
+				-webkit-appearance: none;
+				background-color: map-get($select2-input-fields-map-merged, 'search-field-backgound-color');
+				border: 1px solid map-get($select2-input-fields-map-merged, 'search-field-border-color');
+				color: map-get($select2-input-fields-map-merged, 'search-field-text-color');
+				font-family: inherit;
+				font-size: inherit;
+				font-weight: inherit;
+				line-height: 20px;
+				margin: 0;
+				outline: none;
+				padding: 4px 8px;
+				width: 100%;
+
+				&::-webkit-search-cancel-button {
+					-webkit-appearance: none;
+				}
+
+				&:focus {
+					background-color: map-get($select2-input-fields-map-merged, 'search-field-focus-backgound-color');
+					border: 1px solid map-get($select2-input-fields-map-merged, 'search-field-focus-border-color');
+					color: map-get($select2-input-fields-map-merged, 'search-field-focus-text-color');
+				}
+			}
+		}
+
+		.select2-results {
+			display: block;
+
+			> .select2-results__options {
+				max-height: 200px;
+				overflow-y: auto;
+			}
+		}
+
+		.select2-results__options {
+			font-size: #{map-get($select2-input-fields-map-merged, 'input-fields-text-size')}px;
+			line-height: #{map-get($select2-input-fields-map-merged, 'input-fields-text-line-height')}px;
+			list-style: none;
+			margin: 5px 0;
+			padding: 2px 15px;
+			position: relative;
+		}
+
+		.select2-results__option {
+			padding: 3px 0;
+			transition: $color-transition;
+			user-select: none;
+
+			&[aria-selected] {
+				cursor: pointer;
+			}
+
+			&[role=group] {
+				padding: 0;
+			}
+
+			&[aria-disabled=true] {
+				color: $white;
+			}
+
+			&[aria-selected=true],
+			&[data-selected=true] {
+				background: none;
+				color: map-get($select2-input-fields-map-merged, 'input-fields-focus-text-color');
+			}
+
+			.select2-results__option {
+				padding-left: 1em;
+
+				.select2-results__group {
+					padding-left: 0;
+				}
+
+				.select2-results__option {
+					margin-left: -1em;
+					padding-left: 2em;
+
+					.select2-results__option {
+						margin-left: -2em;
+						padding-left: 3em;
+
+						.select2-results__option {
+							margin-left: -3em;
+							padding-left: 4em;
+
+							.select2-results__option {
+								margin-left: -4em;
+								padding-left: 5em;
+
+								.select2-results__option {
+									margin-left: -5em;
+									padding-left: 6em;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.select2-results__option--highlighted {
+
+			&[aria-selected] {
+				background: none;
+				color: map-get($select2-input-fields-map-merged, 'dropdown-item-hover-color');
+			}
+		}
+
+		.select2-results__group {
+			cursor: default;
+			display: block;
+			padding: 7px 0;
+		}
+
+		&[dir="rtl"] {
+
+			.select2-selection--single {
+
+				.select2-selection__clear {
+					float: left;
+				}
+
+				.select2-selection__rendered {
+					padding: 0;
+				}
+
+				.select2-selection__arrow {
+					left: 0;
+					right: auto;
+				}
+			}
+
+			.select2-selection--multiple {
+
+				.select2-selection__choice,
+				.select2-selection__placeholder,
+				.select2-search--inline {
+					float: right;
+				}
+
+				.select2-selection__rendered {
+					padding: 0;
+				}
+
+				.select2-selection__choice {
+					margin: 7px auto 0 5px;
+				}
+
+				.select2-selection__choice__remove {
+					margin: 0 auto 0 3px;
+				}
+			}
+		}
+
+		&.select2-container--disabled {
+
+			.select2-selection--single,
+			.select2-selection--multiple {
+				background-color: $background-color;
+				cursor: default;
+
+				.select2-selection__clear {
+					display: none;
+				}
+			}
+
+			.select2-selection__choice__remove {
+				display: none;
+			}
+		}
+
+		&.select2-container--open {
+
+			.select2-selection--single,
+			.select2-selection--multiple {
+				color: map-get($select2-input-fields-map-merged, 'input-fields-focus-text-color');
+			}
+
+			.select2-dropdown {
+				left: 0;
+
+				&.select2-dropdown--above {
+					border-bottom-color: transparent;
+				}
+
+				&.select2-dropdown--below {
+					border-top-color: transparent;
+				}
+			}
+		}
+	}
+
+	.select2-selection {
+
+		@each $key, $values in $input-fields-area-map {
+			$input-fields-area-map-merged: map-merge($input-fields-map, $values);
+
+			#{$key} & {
+				background-color: map-get($input-fields-area-map-merged, 'input-fields-background-color') !important; // to override stronger selector
+				border-color: map-get($input-fields-area-map-merged, 'input-fields-border-color') !important; // to override stronger selector
+				color: map-get($input-fields-area-map-merged, 'input-fields-text-color') !important; // to override stronger selector
+
+				&:focus {
+					background-color: map-get($input-fields-area-map-merged, 'input-fields-focus-background-color') !important; // to override stronger selector
+					border-color: map-get($input-fields-area-map-merged, 'input-fields-focus-border-color') !important; // to override stronger selector
+					color: map-get($input-fields-area-map-merged, 'input-fields-focus-text-color') !important; // to override stronger selector
+				}
+			}
+		}
+	}
+}
+
+body:not([class*="artorias-core"]) {
+
+	.select2-container--default {
+
+		.select2-selection--single {
+
+			.select2-selection__arrow {
+
+				&:before {
+					@include qodefIconType('arrow-down-fallback');
+				}
+			}
+		}
+	}
+}
+
+.select2-close-mask {
+	background-color: $white;
+	border: 0;
+	display: block;
+	filter: alpha(opacity=0);
+	height: auto;
+	left: 0;
+	margin: 0;
+	min-height: 100%;
+	min-width: 100%;
+	opacity: 0;
+	padding: 0;
+	position: fixed;
+	top: 0;
+	width: auto;
+	z-index: 99;
+}
+
+.select2-hidden-accessible {
+	border: 0 !important;
+	clip: rect(0 0 0 0) !important;
+	clip-path: inset(50%) !important;
+	height: 0 !important;
+	line-height: 1;
+	overflow: hidden !important;
+	padding: 0 !important;
+	position: absolute !important;
+	white-space: nowrap !important;
+	width: 1px !important;
+}
+
+/* ==========================================================================
+   Search appearance tweak begin
+   ========================================================================== */
+
+input[type="search"] {
+
+	&::-webkit-search-decoration,
+	&::-webkit-search-cancel-button,
+	&::-webkit-search-results-button,
+	&::-webkit-search-results-decoration {
+		display: none;
+	}
+}
+
+input[type="search"],
+input[type="text"] {
+
+	&::-ms-clear {
+		display: none;
+	}
+}
+
+/* ==========================================================================
+   Autocomplete appearance tweak begin
+   ========================================================================== */
+
+input:-webkit-autofill {
+
+	@each $key, $values in $input-fields-area-map {
+		$input-fields-area-map-merged: map-merge($input-fields-map, $values);
+
+		#{$key} & {
+			// following colors can't be transparent
+			-webkit-box-shadow: 0 0 0 1000px map-get($input-fields-area-map-merged, 'input-fields-background-color') inset;
+			-webkit-text-fill-color: map-get($input-fields-area-map-merged, 'input-fields-text-color');
+		}
+	}
+}

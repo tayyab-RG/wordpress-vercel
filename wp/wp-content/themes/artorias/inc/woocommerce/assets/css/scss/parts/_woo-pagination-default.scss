@@ -1,0 +1,15 @@
+/* ==========================================================================
+   WooCommerce pagination styles
+   ========================================================================== */
+
+#qodef-woo-page {
+
+	.woocommerce-pagination {
+		$pagination-class-map: (
+			wrapper: null,
+		);
+
+		@include qodefPaginationStyles($pagination-class-map);
+		margin-top: 20px;
+	}
+}

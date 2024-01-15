@@ -1,0 +1,53 @@
+/* ==========================================================================
+   Default widgets map
+   ========================================================================== */
+
+$wp-widgets-map: (
+	widget-margin: 45,
+	widget-title-margin: 10,
+	widget-title-adjusted-margin: get-text-space(), // ( widget list item line height - widget list item line height ) / 2
+	widget-title-color: $white,
+	list-item-bottom-margin: 10,
+	text-color: $silver,
+	link-color: $white,
+	link-hover-color: $white,
+	link-hover-color-additional: $gray,
+	list-link-color: $white,
+	list-link-hover-color: $white,
+	search-button-color: $white, // button inside
+	search-button-hover-color: $gray, // button inside
+	button-color: $white,
+	button-hover-color: $white,
+	button-background-color: transparent,
+	button-hover-background-color: transparent,
+	button-border-color: $white,
+	button-hover-border-color: $white,
+	thumbnail-width: 110,
+	thumbnail-height: 133,
+	thumbnail-border-color: $white,
+	thumbnail-right-margin: 20,
+	list-item-with-thumbnail-bottom-margin: 20,
+	calendar-border-color: $white,
+	calendar-today-color: $background-color,
+	gallery-gutter: 5,
+	tag-color: $gray,
+);
+
+/* ==========================================================================
+   Override default widgets map for specific widget area
+   ========================================================================== */
+
+$wp-widgets-area-map: (
+	'': (),
+	'#qodef-top-area' : (
+		widget-margin: 0,
+	),
+	'#qodef-page-footer': (
+		widget-margin: 48,
+		widget-title-margin: 37,
+		link-hover-color-additional: $white,
+	),
+	'#qodef-side-area': (
+		link-hover-color-additional: $silver,
+	),
+);

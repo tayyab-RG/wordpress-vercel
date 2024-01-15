@@ -1,0 +1,70 @@
+/* ==========================================================================
+   Color variables
+   ========================================================================== */
+
+$white: var(--qode-main-color);
+$silver: #cccccc;
+$gray: #8b8b8b;
+$black: #000000;
+
+/* ==========================================================================
+   Typography variables
+   ========================================================================== */
+$text-font: 'Space Mono', sans-serif;
+$text-font-size: 16px;
+$text-line-height: 27px;
+$text-line-height-em: #{($text-line-height / $text-font-size)}em;
+$text-font-weight: 400;
+$text-color: #cacaca;
+
+$heading-font: 'Rubik', sans-serif;
+
+$transition-timing: .2s ease-out;
+$color-transition: color $transition-timing;
+$background-color-transition: background-color $transition-timing;
+$border-color-transition: border-color $transition-timing;
+$opacity-transition: opacity $transition-timing;
+$special-ease: cubic-bezier(0.15, 0.74, 0.18, 0.97);
+$special-ease-move: cubic-bezier(.39,.1,0,.98);
+$special-ease-zoom: cubic-bezier(0.2, 0.7, 0.18, 0.93);
+
+$sliding-area-transition-time: .6s;
+$sliding-area-transition-timing: $sliding-area-transition-time cubic-bezier(.77, 0, .175, 1);
+$sliding-area-transition: all $sliding-area-transition-timing;
+
+/* ==========================================================================
+   Box variables
+   ========================================================================== */
+$page-content-padding: 130px 0 100px;
+$side-padding: 60px;
+$full-width-side-padding: 0 $side-padding;
+$side-padding-responsive: 7%;
+$full-width-side-padding-responsive: 0 $side-padding-responsive;
+$background-color: $black;
+$border-color: $white;
+$border-radius: 4px;
+$box-shadow: 3px 3px 15px 0 rgba($white, .5);
+
+/* ==========================================================================
+   Devices screen size variables
+   ========================================================================== */
+$screen-size-1681: 1681px;
+$screen-size-1680: 1680px;
+$screen-size-1601: 1601px;
+$screen-size-1600: 1600px;
+$screen-size-1441: 1441px;
+$screen-size-1440: 1440px;
+$screen-size-1367: 1367px;
+$screen-size-1366: 1366px;
+$screen-size-1281: 1281px;
+$screen-size-1280: 1280px;
+$screen-size-1201: 1201px;
+$screen-size-1200: 1200px;
+$screen-size-1025: 1025px;
+$screen-size-1024: 1024px;
+$screen-size-769: 769px;
+$screen-size-768: 768px;
+$screen-size-681: 681px;
+$screen-size-680: 680px;
+$screen-size-481: 481px;
+$screen-size-480: 480px;

@@ -1,0 +1,275 @@
+/* ==========================================================================
+   9.0 Swiper carousel styles
+   ========================================================================== */
+
+.qodef-swiper-container { // this is the same css style as default swiper-container have
+	list-style: none;
+	margin: 0 auto;
+	overflow: hidden;
+	padding: 0;
+	position: relative;
+	visibility: hidden;
+	z-index: 1;
+
+	.swiper-slide {
+
+		img {
+			width: 100%;
+		}
+	}
+
+	&.qodef-blog {
+
+		.qodef-blog-item {
+			margin-bottom: 0;
+		}
+	}
+
+	&.qodef-swiper--initialized {
+		visibility: visible;
+	}
+
+	&.qodef-swiper--show-hidden-slides {
+		overflow: visible;
+
+		.swiper-button-prev {
+			left: 50% !important;
+			transform: translate(calc(-50vw + 64px), -50%) !important;
+
+			@at-root .swiper-container-horizontal.qodef-swiper--show-pagination#{&} {
+				transform: translate(calc(-50vw + 64px), calc(-50% - 30px)) !important;
+			}
+		}
+
+		.swiper-button-next {
+			right: 50% !important;
+			transform: translate(calc(50vw - 64px), -50%) !important;
+
+			.swiper-container-horizontal.qodef-swiper--show-pagination#{&} {
+				transform: translate(calc(50vw - 64px), calc(-50% - 30px)) !important;
+			}
+		}
+
+		.qodef-swiper-together-nav {
+			justify-content: center !important;
+			transform: translateX(calc(50vw - 176px)) !important;
+
+			.swiper-button-prev,
+			.swiper-button-next {
+				transform: none !important;
+			}
+		}
+	}
+
+	&.qodef-swiper--show-navigation-combo {
+
+		.swiper-button-prev,
+		.swiper-button-next {
+
+			@include qodefScreenSize1024() {
+				display: none;
+			}
+		}
+
+		~ .swiper-button-outside {
+
+			@include qodefScreenSize1024() {
+				display: none;
+			}
+		}
+
+		.swiper-pagination-bullets {
+			display: none;
+
+			@include qodefScreenSize1024() {
+				display: flex;
+			}
+		}
+	}
+
+	&.qodef--no-bottom-space {
+		margin-bottom: 0 !important;
+	}
+}
+
+.swiper-pagination-bullets {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	width: auto;
+
+	.swiper-container-horizontal > & {
+		bottom: 0 !important;
+		height: 30px;
+		margin-top: 30px;
+		position: relative !important;
+		width: 30px;
+	}
+
+	.swiper-container-vertical > & {
+		flex-direction: column;
+		height: auto;
+		right: 0 !important;
+		width: 30px;
+	}
+
+	.swiper-pagination-bullet {
+		align-items: center;
+		background-color: transparent;
+		border: 3px solid $white;
+		border-radius: 0;
+		display: flex;
+		height: 11px;
+		justify-content: center;
+		margin: 12.5px !important;
+		opacity: 1;
+		padding: 0;
+		position: relative;
+		transition: $background-color-transition;
+		width: 11px;
+
+		&:hover {
+			background-color: $white;
+		}
+
+		&.swiper-pagination-bullet-active {
+			background-color: $white;
+		}
+	}
+}
+
+.qodef-swiper-together-nav {
+	display: grid;
+	gap: 18px;
+	grid-template-areas: "prev next";
+	grid-template-columns: repeat(2, min-content);
+	grid-template-rows: minmax(0, auto);
+	position: relative;
+
+	.swiper-button-prev {
+		grid-area: prev;
+	}
+
+	.swiper-button-next {
+		grid-area: next;
+	}
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+	background-image: none !important;
+	color: $white;
+	height: auto !important;
+	margin: 0 !important;
+	transform: translateY(-50%);
+	transition: all 0.35s ease;
+	width: auto !important;
+
+	.swiper-container-horizontal.qodef-swiper--show-pagination & {
+		transform: translateY(calc(-50% - 30px));
+	}
+
+	.qodef-swiper-together-nav & {
+		position: initial !important;
+		transform: none !important;
+
+		svg {
+			width: 38px;
+		}
+
+		&:hover {
+			svg {
+				transition-delay: .15s;
+			}
+		}
+	}
+
+	svg {
+		display: block;
+		width: 39px;
+		transition: transform .35s $special-ease-move;
+		transform: translateX(0px);
+	}
+
+	&:after {
+		display: none !important;
+	}
+
+	&:hover {
+		color: var(--qode-main-color);
+	}
+}
+
+.swiper-button-prev {
+	left: 30px !important;
+
+	&.swiper-button-outside {
+		left: -56px !important;
+
+		@include qodefScreenSize768 {
+			left: -40px !important;
+		}
+
+		@include qodefScreenSize680 {
+			left: -30px !important;
+		}
+	}
+
+	.swiper-container-vertical & {
+		left: 50% !important;
+		top: 30px;
+		transform: rotate(90deg) translate(0, -50%);
+		transform-origin: 0 0;
+	}
+
+	&:hover {
+		svg {
+			transform: translateX(-7px);
+		}
+	}
+}
+
+.swiper-button-next {
+	right: 30px !important;
+
+	&.swiper-button-outside {
+		right: -56px !important;
+
+		@include qodefScreenSize768 {
+			right: -40px !important;
+		}
+
+		@include qodefScreenSize680 {
+			right: -30px !important;
+		}
+	}
+
+	.swiper-container-vertical & {
+		bottom: 30px;
+		right: 50% !important;
+		top: auto;
+		transform: rotate(90deg) translate(0, -50%);
+		transform-origin: 0 50%;
+	}
+
+	&:hover {
+		svg {
+			transform: translateX(7px);
+		}
+	}
+}
+
+.swiper-container-vertical + .swiper-button-prev {
+	left: 50% !important;
+	top: -56px;
+	transform: rotate(90deg) translate(0, -50%);
+	transform-origin: 0 0;
+}
+
+.swiper-container-vertical + .swiper-button-prev + .swiper-button-next {
+	bottom: -56px;
+	right: 50% !important;
+	top: auto;
+	transform: rotate(90deg) translate(0, -50%);
+	transform-origin: 0 50%;
+}

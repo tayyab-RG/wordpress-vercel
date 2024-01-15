@@ -1,0 +1,183 @@
+/* ==========================================================================
+   Ratings mixins - start
+   ========================================================================== */
+
+@mixin qodefWooNoticeStyle() {
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: flex-start;
+	padding: 20px 30px;
+	margin-bottom: 30px;
+	border: 1px solid $border-color;
+    list-style: none; // woo order tracking error message is unordered list
+
+	a {
+		margin-top: 12px;
+	}
+}
+
+@mixin qodefWooButtonsStyle($size: normal, $type: null, $important: null) {
+	@include qodefButtonDefaultStyle($important);
+	@include qodefButtonSize($size: $size, $important: $important);
+
+	cursor: pointer $important;
+	z-index: 3 $important;
+
+	@if ($type == 'outline') {
+		@include qodefButtonOutlinedColor($important: $important);
+
+		&:hover {
+			@include qodefButtonOutlinedHoverColor($important: $important);
+		}
+	} @else {
+		@include qodefButtonFilledColor($important: $important);
+
+		&:hover {
+			@include qodefButtonFilledHoverColor($important: $important);
+		}
+	}
+}
+
+@mixin qodefWooPriceStyle() {
+	position: relative;
+	display: flex;
+	align-items: center;
+	font-size: 13px;
+	margin: 5px 0 0;
+
+	del {
+		margin-right: 10px;
+	}
+
+	ins {
+		text-decoration: none;
+	}
+}
+
+@mixin qodefWooTemplatesHeadingStyle($margin: 0, $is_h3: false) {
+	$heading_tag: h3;
+
+	@if ($is_h3) {
+		@if ($heading_tag != h3) {
+			@include qodefHeadingStyle($heading_tag);
+		}
+	} @else {
+		@include qodefHeadingStyle($heading_tag);
+	}
+
+	margin: $margin;
+}
+
+@mixin qodefWooLabelsHeadingStyle($with-color: true) {
+	$heading_tag: h5;
+
+	@include qodefHeadingStyle($heading_tag, $with-color);
+}
+
+@mixin qodefWooTemplatesListStyles($margin: 0) {
+	margin: $margin;
+	padding: 0;
+	list-style: none;
+
+	li {
+		position: relative;
+		margin: 0;
+		padding: 15px 0;
+		border-bottom: 1px solid $border-color;
+
+		p {
+			margin: 0;
+		}
+	}
+}
+
+@mixin qodefWooSelect2Style($width: 220px) {
+	width: auto;
+	min-width: $width;
+	margin: 0;
+}
+
+@mixin qodefWooTableStyle() {
+
+	tr {
+		border-left: none;
+		border-right: none;
+		border-top: none;
+	}
+
+	th, td {
+		padding: 15px 0 15px 15px;
+		vertical-align: middle;
+		text-align: left;
+		border: 0;
+
+		&:first-child {
+			padding-left: 0;
+		}
+	}
+
+	th {
+		@include qodefWooLabelsHeadingStyle();
+
+		@include qodefScreenSize680 {
+			font-size: 15px;
+		}
+	}
+
+	td {
+
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+
+			li {
+				margin: 0 0 10px;
+				padding: 0;
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+
+				label {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+
+	p {
+		margin: 0;
+	}
+
+	.variation {
+		@include qodefClearFix();
+
+		dt {
+			clear: left;
+			float: left;
+			font-weight: initial;
+
+			@include qodefScreenSize680 {
+				float: none;
+				width: 100%;
+			}
+		}
+
+		dd {
+			clear: right;
+			float: left;
+			margin: 0 0 0 5px;
+
+			@include qodefScreenSize680 {
+				float: none;
+				margin: 0;
+				width: 100%;
+			}
+		}
+	}
+}
+
+/* ==========================================================================
+   Ratings mixins - end
+   ========================================================================== */

@@ -1,0 +1,59 @@
+/* ==========================================================================
+   Include variables and mixins
+   ========================================================================== */
+@import 'variables-css';
+@import 'variables';
+@import 'mixins';
+
+body {
+	@include qodefParagraphStyle();
+	background-color: $background-color;
+}
+
+@for $i from 1 to 7 {
+
+	h#{$i} {
+		@include qodefHeadingStyle(#{h#{$i}}, true, true);
+		margin: 20px 0;
+	}
+}
+
+a,
+p a {
+	@include qodefLinkStyle();
+}
+
+p {
+	margin: 10px 0;
+}
+
+blockquote {
+	@include qodefRelativeLayout();
+	margin: 0;
+	padding: 0;
+	@include qodefBlockquoteStyle();
+	quotes: none;
+	z-index: 1;
+
+	> * {
+		@include qodefTypographyLayout();
+		margin: 0;
+	}
+
+	p {
+		margin: 0 !important; // gutenberg
+	}
+
+	&:after {
+		content: '';
+	}
+
+	cite {
+		display: block;
+		margin: 10px 0 0;
+		font-style: normal;
+		font-weight: 400 !important;
+		text-align: inherit !important;
+		text-transform: uppercase !important;
+	}
+}

@@ -1,0 +1,101 @@
+/* ==========================================================================
+   7.0 Content styles
+   ========================================================================== */
+
+#qodef-page-wrapper {
+	position: relative;
+	overflow: hidden; // hidden is important in order to prevent content dragging and double scroll bar when content is wider then screen
+}
+
+#qodef-page-outer {
+	position: relative;
+}
+
+#qodef-page-inner {
+	position: relative;
+	padding: $page-content-padding;
+}
+
+#qodef-page-content {
+
+	&.qodef-layout--template {
+
+		.qodef-page-content-section {
+
+			&.qodef-col--12 {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+.qodef--boxed {
+	background-color: $background-color;
+
+	#qodef-page-wrapper {
+		display: block;
+		background-color: $background-color;
+	}
+
+	#qodef-page-inner {
+		width: 100% !important; // important is set in order to override default content gid behavior
+		padding-left: $boxed-grid-padding-size;
+		padding-right: $boxed-grid-padding-size;
+	}
+}
+
+.qodef--passepartout {
+
+	#qodef-page-wrapper {
+		background-color: $background-color;
+	}
+}
+
+.qodef-parallax-item {
+	will-change: transform;
+}
+
+.qodef--float-ghost {
+	position: relative;
+
+	img {
+		animation: qode-float 2s infinite;
+	}
+
+	.qodef-m-image {
+		&:after {
+			content: '';
+			display: block;
+			background-color: #090808;
+			position: absolute;
+			bottom: -40%;
+			left: 0;
+			width: 100%;
+			height: 20%;
+			border-radius: 50%;
+			animation: qode-shadow-float 2s infinite;
+			z-index: -1;
+		}
+	}
+}
+
+.qodef--has-appear.qodef--custom-404-appear {
+	.qodef--float-ghost {
+		.qodef-m-image {
+			position: relative;
+			transform: scale(0);
+			transition: transform 3.5s .5s;
+			transform-origin: 50% 70%;
+		}
+	}
+
+
+	&.qodef--appeared {
+		.qodef--float-ghost {
+			.qodef-m-image {
+				transform: scale(1);
+			}
+		}
+	}
+}
+

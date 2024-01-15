@@ -1,0 +1,64 @@
+/* ==========================================================================
+   Comments responsive styles
+   ========================================================================== */
+
+#qodef-page-comments {
+
+	@include qodefScreenSize1024() {
+		margin-bottom: 30px;
+	}
+}
+
+#qodef-page-comments-list {
+
+	@include qodefScreenSize1024() {
+
+		.qodef-comment-item {
+
+			.children {
+				padding-left: 40px;
+			}
+
+			.qodef-e-text {
+				padding-right: 0;
+			}
+		}
+	}
+
+	@include qodefScreenSize768() {
+
+		.qodef-m-comments {
+			padding: 0;
+		}
+
+		.qodef-comment-item {
+
+			.children {
+				padding-left: 20px;
+			}
+
+			.qodef-e-links {
+				transform: translateX(0);
+			}
+		}
+	}
+
+	@include qodefScreenSize680() {
+
+		.qodef-comment-item {
+
+			.qodef-e-inner {
+				flex-wrap: wrap;
+			}
+
+			.qodef-e-content {
+				margin-top: 23px;
+				width: 100%;
+			}
+
+			.children {
+				padding-left: 3%;
+			}
+		}
+	}
+}

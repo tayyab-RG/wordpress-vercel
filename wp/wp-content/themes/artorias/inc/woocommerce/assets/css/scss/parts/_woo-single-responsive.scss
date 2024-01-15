@@ -1,0 +1,152 @@
+/* ==========================================================================
+   WooCommerce single styles
+   ========================================================================== */
+
+#qodef-woo-page {
+
+	&.qodef--single {
+
+		@include qodefScreenSize1024 {
+
+			.qodef-woo-single-inner {
+				flex-wrap: wrap;
+			}
+
+			.qodef-woo-single-image {
+				width: 100%;
+			}
+
+			.entry-summary {
+				width: 100%;
+				margin-top: 60px;
+			}
+		}
+
+		@include qodefScreenSize680 {
+
+			.woocommerce-product-gallery {
+
+				@for $i from 0 to $grid-columns-layout-size {
+					$column: $i + 1;
+
+					&.woocommerce-product-gallery--columns-#{$column} {
+
+						@if ($column > 3) {
+
+							figure {
+
+								> .qodef-woo-thumbnails-wrapper {
+
+									.woocommerce-product-gallery__image {
+										width: 50% !important;
+									}
+								}
+							}
+						}
+					}
+				}
+
+				&.qodef-position--right {
+
+					.woocommerce-product-gallery__trigger {
+						left: 10px;
+					}
+
+					figure {
+						flex-wrap: wrap;
+
+						> .woocommerce-product-gallery__image {
+							width: 100% !important;
+						}
+
+						> .qodef-woo-thumbnails-wrapper {
+							width: 100% !important;
+							display: flex;
+							flex-wrap: wrap;
+
+							.woocommerce-product-gallery__image {
+
+								&:first-child {
+									margin-top: #{2 * $woo-product-image-gutter}px !important;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			form.cart {
+
+				&:not(.variations_form),
+				.variations_button {
+					flex-direction: column;
+
+					.quantity {
+						margin-bottom: 20px;
+					}
+				}
+			}
+
+			.woocommerce-Reviews {
+
+				.comment_container {
+					flex-direction: column;
+
+					> img {
+						margin-bottom: 25px;
+					}
+				}
+
+				.description {
+					padding-right: 0;
+				}
+			}
+		}
+
+		@include qodefScreenSize480 {
+
+			form.cart {
+
+				.variations {
+
+					.value {
+						position: relative;
+					}
+
+					.reset_variations {
+						bottom: 0;
+						left: 0;
+						margin: 0;
+						position: absolute;
+					}
+
+					tr:last-child {
+
+						.value {
+							padding-bottom: 20px;
+						}
+
+						.select2-container--default {
+							margin-bottom: 11px;
+						}
+					}
+				}
+			}
+		}
+
+		// force 2 instead of 3 default cols on vertical pad
+		.related,
+		.up-sells {
+
+			@media only screen and (max-width: $screen-size-1024) and (min-width: $screen-size-769) {
+
+				.columns-4 {
+
+					.product {
+						width: 50%;
+					}
+				}
+			}
+		}
+	}
+}
